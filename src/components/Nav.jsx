@@ -5,7 +5,7 @@ function Nav() {
     <nav>
         <div className="container nav-container">         
             <div className="nav-left">
-                <Link to='/'>Trello Clone</Link>
+                <Link to='/'>Trello Remake</Link>
             </div>
             <div className="nav-right">
                 <Link to='/login'>Login</Link>

@@ -55,3 +55,13 @@ nav .nav-right {
   justify-content: center;
   gap: 15px;
 }
+
+
+/* footer */
+
+footer {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  height: 3rem;
+}
