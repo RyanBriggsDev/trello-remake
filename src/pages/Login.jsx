@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+
+import OAuth from "../components/OAuth";
 
 function Login() {
 
@@ -14,7 +16,7 @@ function Login() {
   const {email, password} = formData
 
   const navigate = useNavigate()
-  
+
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -61,6 +63,9 @@ function Login() {
                 Sign In
               </button>
           </form>
+          <OAuth />
+          <Link to='/forgot-password'><p>Forgot Password?</p></Link>
+          <h3>No account? <Link to={'/register'}>Register</Link> </h3>
     </>
   )
 }

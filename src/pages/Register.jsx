@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { db } from '../firebase.config'
 
+import OAuth from '../components/OAuth'
+
 function Register() {
 
   const navigate = useNavigate()
@@ -31,6 +33,10 @@ function Register() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
+
+    if(password.length < 6|| password2.length < 6) {
+      toast.error('Password must be minimum 6 characters')
+    }
 
     if(password !== password2) {
       toast.error('Passwords do not match')
@@ -109,6 +115,7 @@ function Register() {
           />
           <button>Submit</button>
       </form>
+      <OAuth />
     </div>
   )
 }

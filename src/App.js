@@ -5,6 +5,8 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import PortfolioRedirect from "./redirects/PortfolioRedirect";
+import Board from './pages/Board'
+import ForgotPassword from "./pages/ForgotPassword";
 
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 
@@ -25,6 +27,8 @@ function App() {
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/portfolioRe' element={<PortfolioRedirect />} />
+              <Route path='/board' element={<Board />} />
+              <Route path='/forgot-password' element={<ForgotPassword />} />
             </Routes>
           </div>
           <Footer />
