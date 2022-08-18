@@ -1,0 +1,7 @@
+18-8-22
+- Login fixed
+- Password Reset
+- added error for minimum 6 character password
+- Google Auth
+- Homepage
+- Import boards from firebase
