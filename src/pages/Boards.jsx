@@ -3,7 +3,7 @@ import { collection, getDocs, query, where, orderBy, limit, startAfter, getDoc }
 import { db } from '../firebase.config'
 import { toast } from "react-toastify"
 
-function Board() {
+function Boards() {
 
   const [boards, setBoards] = useState([])
   const [loading, setLoading] = useState(true)
@@ -50,4 +50,4 @@ function Board() {
 )
   }
 
-export default Board
+export default Boards

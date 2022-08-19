@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom"
 import { getAuth } from "firebase/auth"
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
 
 function Nav() {
@@ -8,7 +8,8 @@ function Nav() {
   const auth = getAuth()
   const navigate = useNavigate()
 
-  const [user, setUser] = useState(null)
+  const [loggedIn, setLoggedIn] = useState(null)
+  const [user, setUser] = useState()
 
   useEffect(() => {
     if (auth.currentUser) {
@@ -23,26 +24,29 @@ function Nav() {
     toast.success('Logged out')
   }
 
+  console.log(auth.current);
+
   return (
     <nav>
-        <div className="container nav-container">         
-            <div className="nav-left">
-                <Link to='/'>Trello Remake</Link>
-            </div>
-            <div className="nav-right">
-              {user 
-                ? 
-              <button onClick={onLogout}>Logout</button>
-                :
-                <>
-              <Link to='/login'>Login</Link>
-              <Link to='/register'>Register</Link>
-                </>
-            }
-            </div>
+      <div className="container nav-container">
+        <div className="nav-left">
+          <Link to='/'>Trello Remake</Link>
         </div>
+        <div className="nav-right">
+          {user === null ? 
+          <>
+            <Link to='/login'>Login</Link>
+            <Link to='/register'>Register</Link>
+          </>
+            :
+            <>
+              <button onClick={onLogout}>Logout</button>
+              <Link to='/boards'>Your Boards</Link>
+            </>
+          }
+        </div>
+      </div>
     </nav>
   )
-}
-
+  }
 export default Nav

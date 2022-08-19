@@ -55,16 +55,16 @@ function Register() {
         displayName: name
       })
 
-      // add user to firestore
-      // make a copy of form data
-      const formDataCopy = {...formData}
-      // remove password from copied variable
-      delete formDataCopy.password
-      delete formDataCopy.password2
-      // add timestamp to copy data
-      formDataCopy.timestamp = serverTimestamp()
-      // setDoc updates database and adds user to 'users' firestore collection
-      await setDoc(doc(db, 'users', user.uid), formDataCopy)
+      // // add user to firestore
+      // // make a copy of form data
+      // const formDataCopy = {...formData}
+      // // remove password from copied variable
+      // delete formDataCopy.password
+      // delete formDataCopy.password2
+      // // add timestamp to copy data
+      // formDataCopy.timestamp = serverTimestamp()
+      // // setDoc updates database and adds user to 'users' firestore collection
+      // await setDoc(doc(db, 'users', user.uid), formDataCopy)
       // redirect to home
       navigate('/')
       toast.success('User created')

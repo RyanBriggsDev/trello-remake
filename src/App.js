@@ -5,13 +5,14 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import PortfolioRedirect from "./redirects/PortfolioRedirect";
-import Board from './pages/Board'
+import Boards from './pages/Boards'
 import ForgotPassword from "./pages/ForgotPassword";
 
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CreateBoard from "./pages/CreateBoard";
 
 function App() {
   return (
@@ -20,15 +21,15 @@ function App() {
       <Router>
         <div className="content-container">
           <Nav />
-            {/* Content */}
           <div className="container">
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/portfolioRe' element={<PortfolioRedirect />} />
-              <Route path='/board' element={<Board />} />
+              <Route path='/boards' element={<Boards />} />
               <Route path='/forgot-password' element={<ForgotPassword />} />
+              <Route path='/create-board' element={<CreateBoard />} />
             </Routes>
           </div>
           <Footer />
