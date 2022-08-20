@@ -10,3 +10,10 @@
 19-8-22
 - Fixed navbar/login issue again
 - Board creation
+
+
+20-8-22
+- Conditional display for button on home page
+- create board can only be accessed by logged in user
+- discovered another login display bug, going to move this to a context file so the auth status is consistent.
+- Boilerplate for context api 

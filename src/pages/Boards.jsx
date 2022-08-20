@@ -33,7 +33,7 @@ function Boards() {
             setBoards(boards)
             setLoading(false)
         } catch (error) {
-            toast.error('Failed to find listings')
+            toast.error('Failed to find boards')
         }
     }
     fetchListings()

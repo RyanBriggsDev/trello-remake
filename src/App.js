@@ -1,6 +1,8 @@
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
+import { AuthProvider } from "./context/AuthContext";
+
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
@@ -16,7 +18,7 @@ import CreateBoard from "./pages/CreateBoard";
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <ToastContainer />
       <Router>
         <div className="content-container">
@@ -35,8 +37,8 @@ function App() {
           <Footer />
         </div>
       </Router>
-     </>
-    );
+    </AuthProvider>
+  );
 }
 
 export default App; 
