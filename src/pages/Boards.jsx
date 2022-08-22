@@ -9,7 +9,7 @@ function Boards() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const fetchListings = async () => {
+    const fetchBoards = async () => {
         try {
             // Create a query - this is like setting a ? query for an api
             const q = query(
@@ -36,7 +36,7 @@ function Boards() {
             toast.error('Failed to find boards')
         }
     }
-    fetchListings()
+    fetchBoards()
   }, [])
 
   return (

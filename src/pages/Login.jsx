@@ -6,8 +6,11 @@ import { toast } from "react-toastify";
 import OAuth from "../components/OAuth";
 
 function Login() {
+  
+  const auth = getAuth()
 
   // state
+
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -27,8 +30,6 @@ function Login() {
   const onSubmit = async (e) => {
     e.preventDefault()
     try {
-      // initialise auth
-      const auth = getAuth()
       const userCredential = await signInWithEmailAndPassword(auth, email, password)
       if(userCredential.user) {
         navigate('/')
@@ -38,6 +39,14 @@ function Login() {
     }
   }
 
+  // if(loading) {
+  //   return <p>Loading...</p>
+  // }
+
+  // if(user !== null) {
+  //   toast.info('Already signed in')
+  //   return navigate('/') 
+  // }
   
   return (
     <>

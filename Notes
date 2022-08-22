@@ -16,4 +16,8 @@
 - Conditional display for button on home page
 - create board can only be accessed by logged in user
 - discovered another login display bug, going to move this to a context file so the auth status is consistent.
-- Boilerplate for context api 
+- Boilerplate for context api
+
+
+22-8-22
+- 

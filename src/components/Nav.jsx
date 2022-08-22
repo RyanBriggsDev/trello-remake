@@ -5,48 +5,51 @@ import { toast } from "react-toastify"
 
 function Nav() {
 
-  const auth = getAuth()
+  // const { auth } = useContext(AuthContext)
+  
   const navigate = useNavigate()
-
-  const [loggedIn, setLoggedIn] = useState(null)
-  const [user, setUser] = useState()
+  const [user, setUser] = useState(null)
+  // const auth = getAuth()
 
   useEffect(() => {
-    if (auth.currentUser) {
-      setUser(auth.currentUser); 
+    const fetchUser = async () => {
+      const auth = getAuth()
+      setUser(auth)
     }
-  }, [auth.currentUser])
+    fetchUser()
+  }, [user])
 
-  const onLogout = () => {
-    auth.signOut()
-    setUser(null)
-    navigate('/')
-    toast.success('Logged out')
-  }
+  // const onLogout = () => {
+  //   auth.signOut()
+  //   navigate('/')
+  //   // toast.success('Logged out')
+  // }
 
-  console.log(auth.current);
+  return <p>egg</p>
+}
 
-  return (
-    <nav>
-      <div className="container nav-container">
-        <div className="nav-left">
-          <Link to='/'>Trello Remake</Link>
-        </div>
-        <div className="nav-right">
-          {user === null ? 
-          <>
-            <Link to='/login'>Login</Link>
-            <Link to='/register'>Register</Link>
-          </>
-            :
-            <>
-              <button onClick={onLogout}>Logout</button>
-              <Link to='/boards'>Your Boards</Link>
-            </>
-          }
-        </div>
-      </div>
-    </nav>
-  )
-  }
+  //   return (
+  //     <nav>
+  //       <div className="container nav-container">
+  //         <div className="nav-left">
+  //           <Link to='/'>Trello Remake</Link>
+  //         </div>
+  //         <div className="nav-right">
+  //           {auth.currentUser !== null ?
+  //           <>
+  //             <button onClick={onLogout}>Logout</button>
+  //             <Link to='/boards'>Your Boards</Link>
+  //           </>
+  //             :
+  //             <>
+  //               <Link to='/login'>Login</Link>
+  //               <Link to='/register'>Register</Link>
+  //             </>
+  //           }
+  //         </div>
+  //       </div>
+  //     </nav>
+  //   )   
+  // }
+
 export default Nav

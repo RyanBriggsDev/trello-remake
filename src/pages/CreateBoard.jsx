@@ -60,8 +60,8 @@ function CreateBoard() {
               <button>Submit</button>
             </form>
           </div>
-          <div className="board-display-div">
-            <h3 style={{background: color}}>{boardName}</h3>
+          <div className="board-display-div" >
+            <h3>{boardName}</h3>
           </div>
         </main>
           
