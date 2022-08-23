@@ -1,82 +1,55 @@
-import { useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-
-import OAuth from "../components/OAuth";
+import { auth, logInWithEmailAndPassword, signInWithGoogle } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function Login() {
-  
-  const auth = getAuth()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
 
-  // state
-
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  })
-
-  const {email, password} = formData
-
-  const navigate = useNavigate()
-
-  const onChange = (e) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.id]: e.target.value
-    }))
-  }
-
-  const onSubmit = async (e) => {
-    e.preventDefault()
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password)
-      if(userCredential.user) {
-        navigate('/')
-      }
-    } catch (error) {
-      toast.error('Incorrect user credentials')
+  useEffect(() => {
+    if (loading) {
+      // maybe trigger a loading screen
+      <p>Loading...</p>
+      return;
     }
-  }
+    if (user) navigate("/dashboard");
+  }, [user, loading]);
 
-  // if(loading) {
-  //   return <p>Loading...</p>
-  // }
-
-  // if(user !== null) {
-  //   toast.info('Already signed in')
-  //   return navigate('/') 
-  // }
-  
   return (
-    <>
-      <h1>Welcome</h1>
-      <form onSubmit={onSubmit}>
-            <input 
-              type="email" 
-              className="email-input" 
-              placeholder="Email" 
-              id='email' 
-              value={email} 
-              onChange={onChange}
-            />
-            <input 
-              type='password' 
-              className="password-input" 
-              placeholder="Password" 
-              id='password' 
-              value={password} 
-              onChange={onChange}
-            />
-              <button>
-                Sign In
-              </button>
-          </form>
-          <OAuth />
-          <Link to='/forgot-password'><p>Forgot Password?</p></Link>
-          <h3>No account? <Link to={'/register'}>Register</Link> </h3>
-    </>
-  )
+    <div className="">
+        <input
+          type="text"
+          className="login__textBox"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="E-mail Address"
+        />
+        <input
+          type="password"
+          className="login__textBox"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+        />
+        <button
+          className="login__btn"
+          onClick={() => logInWithEmailAndPassword(email, password)}
+        >
+          Login
+        </button>
+        <button className="login__btn login__google" onClick={signInWithGoogle}>
+          Login with Google
+        </button>
+        <div>
+          <Link to="/reset">Forgot Password</Link>
+        </div>
+        <div>
+          Don't have an account? <Link to="/register">Register</Link> now.
+        </div>
+      </div>
+  );
 }
-
-export default Login
+export default Login;

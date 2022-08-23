@@ -2,54 +2,41 @@ import { Link, useNavigate } from "react-router-dom"
 import { getAuth } from "firebase/auth"
 import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
+import { logout, db, auth } from "../firebase"
+import { useAuthState } from "react-firebase-hooks/auth"
+import { query, collection, getDocs, where } from "firebase/firestore";
 
 function Nav() {
 
-  // const { auth } = useContext(AuthContext)
-  
-  const navigate = useNavigate()
-  const [user, setUser] = useState(null)
-  // const auth = getAuth()
+  const [user, loading, error] = useAuthState(auth);
+  const [name, setName] = useState("");
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const auth = getAuth()
-      setUser(auth)
-    }
-    fetchUser()
-  }, [user])
+      
+      return (
+        <nav>
+        <div className="container nav-container">
+          <div className="nav-left">
+            <Link to='/'>Trello Remake</Link>
+          </div>
+          <div className="nav-right">
 
-  // const onLogout = () => {
-  //   auth.signOut()
-  //   navigate('/')
-  //   // toast.success('Logged out')
-  // }
+            {user || user !== null ?
+            <>
+              <button onClick={logout}>Logout</button>
+              <Link to='/boards'>Your Boards</Link>
+            </>
+               :
+               <>
+                <Link to='/login'>Login</Link>
+                <Link to='/register'>Register</Link>
+              </>
+            }
 
-  return <p>egg</p>
-}
-
-  //   return (
-  //     <nav>
-  //       <div className="container nav-container">
-  //         <div className="nav-left">
-  //           <Link to='/'>Trello Remake</Link>
-  //         </div>
-  //         <div className="nav-right">
-  //           {auth.currentUser !== null ?
-  //           <>
-  //             <button onClick={onLogout}>Logout</button>
-  //             <Link to='/boards'>Your Boards</Link>
-  //           </>
-  //             :
-  //             <>
-  //               <Link to='/login'>Login</Link>
-  //               <Link to='/register'>Register</Link>
-  //             </>
-  //           }
-  //         </div>
-  //       </div>
-  //     </nav>
-  //   )   
-  // }
+          </div>
+        </div>
+      </nav>
+    )   
+  }
 
 export default Nav

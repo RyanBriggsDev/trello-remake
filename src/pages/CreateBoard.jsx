@@ -1,6 +1,5 @@
 import { serverTimestamp, doc, addDoc, collection } from "firebase/firestore"
 import { getAuth } from 'firebase/auth'
-import { db } from "../firebase.config"
 import { useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { toast } from "react-toastify"
@@ -12,13 +11,13 @@ function CreateBoard() {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
     
-    useEffect(() => {
-      const auth = getAuth()
-      if (auth.currentUser) {
-        setUser(auth.currentUser)
-      }
-      setLoading(false)
-    }, [auth.currentUser])
+    // useEffect(() => {
+    //   const auth = getAuth()
+    //   if (auth.currentUser) {
+    //     setUser(auth.currentUser)
+    //   }
+    //   setLoading(false)
+    // }, [auth.currentUser])
 
     const [formData, setFormData] = useState({
         boardName: '',
@@ -37,7 +36,7 @@ function CreateBoard() {
       const onSubmit = async (e) => {
         e.preventDefault()
         formData.timestamp = serverTimestamp()
-        const docRef = await addDoc(collection(db, 'boards'), formData)
+        // const docRef = await addDoc(collection(db, 'boards'), formData)
         toast.success('Success')
         // navigate('/')
       }

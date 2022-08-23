@@ -1,123 +1,67 @@
-import { 
-  getAuth, 
-  createUserWithEmailAndPassword, 
-  updateProfile 
-} from 'firebase/auth'
-import { serverTimestamp, setDoc, doc } from 'firebase/firestore'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import { db } from '../firebase.config'
-
-import OAuth from '../components/OAuth'
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  auth,
+  registerWithEmailAndPassword,
+  signInWithGoogle,
+} from "../firebase";
 
 function Register() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
+  const register = () => {
+    if (!name) alert("Please enter name");
+    registerWithEmailAndPassword(name, email, password);
+  };
 
-  const navigate = useNavigate()
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    password2: '',
-  })
-
-  const { name, email, password, password2 } = formData
-  
-  const onChange = (e) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.id]: e.target.value
-    }))
-  }
-
-  const onSubmit = async (e) => {
-    e.preventDefault()
-
-    if(password.length < 6|| password2.length < 6) {
-      toast.error('Password must be minimum 6 characters')
-    }
-
-    if(password !== password2) {
-      toast.error('Passwords do not match')
-    } else {
-    try {
-      // initiate auth
-      const auth = getAuth()
-       // reg the user
-      const userCredential = await createUserWithEmailAndPassword(
-        auth, email, password
-      )
-      // get user info
-      const user = userCredential.user
-      // update user display name
-      updateProfile(auth.currentUser, {
-        displayName: name
-      })
-
-      // // add user to firestore
-      // // make a copy of form data
-      // const formDataCopy = {...formData}
-      // // remove password from copied variable
-      // delete formDataCopy.password
-      // delete formDataCopy.password2
-      // // add timestamp to copy data
-      // formDataCopy.timestamp = serverTimestamp()
-      // // setDoc updates database and adds user to 'users' firestore collection
-      // await setDoc(doc(db, 'users', user.uid), formDataCopy)
-      // redirect to home
-      navigate('/')
-      toast.success('User created')
-
-    } catch (error) {
-      toast.error(error)
-    }
-  }
-  }
+  useEffect(() => {
+    if (loading) return;
+    if (user) navigate("/dashboard");
+  }, [user, loading]);
 
   return (
-    <div>
-      <h1>Register</h1>
-      <form onSubmit={onSubmit}>
-          <input 
-            type="text" 
-            id='name'
-            value={name}
-            onChange={onChange}
-            placeholder="Enter your name"
-            required
-          />
-          <input 
-            type="text" 
-            id='email'
-            value={email}
-            onChange={onChange} 
-            placeholder="Enter your email"
-            required
-          />
-          <input 
-            className="password" 
-            type="password" 
-            id='password'
-            value={password}
-            onChange={onChange}
-            placeholder="Enter your password"
-            required
-          />
-          <input 
-            className="password2" 
-            type="password" 
-            id='password2'
-            value={password2}
-            onChange={onChange}
-            placeholder="Confirm your password"
-            required
-          />
-          <button>Submit</button>
-      </form>
-      <OAuth />
+    <div className="register">
+      <div className="register__container">
+        <input
+          type="text"
+          className="register__textBox"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Full Name"
+        />
+        <input
+          type="text"
+          className="register__textBox"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="E-mail Address"
+        />
+        <input
+          type="password"
+          className="register__textBox"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+        />
+        <button className="register__btn" onClick={register}>
+          Register
+        </button>
+        <button
+          className="register__btn register__google"
+          onClick={signInWithGoogle}
+        >
+          Register with Google
+        </button>
+        <div>
+          Already have an account? <Link to="/">Login</Link> now.
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Register
+export default Register;
