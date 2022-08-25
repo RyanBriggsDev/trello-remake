@@ -11,6 +11,10 @@ function Boards() {
   const [loading, setLoading] = useState(true);
   const [boards, setBoards] = useState(null);
   const [userDocId, setUserDocId] = useState(null)
+  const [updating, setUpdating] = useState(false)
+  const [boardToEdit, setBoardToEdit] = useState()
+  const [editData, setEditData] = useState()
+
   // for updating data
   const [updateData, setUpdateData] = useState({
     title: '',
@@ -18,7 +22,7 @@ function Boards() {
     note1: '',
     note2: '',
     note3: '',
-    user: user,
+    user: ''
   })
 
   const navigate = useNavigate();
@@ -29,7 +33,7 @@ function Boards() {
       try {
         // get user doc id
         const userQ = query(collection(db, "users"),
-        where("uid", "==", user.uid)
+        where("uid", "==", user.uid),
         )
         const userDocSnap = await getDocs(userQ)
         const data = []
@@ -67,9 +71,30 @@ function Boards() {
         }
       }
 
+  const fetchBoardToEdit = async () => {
+      try {
+        const q = query(collection(db, `users/${userDocId}/boards`), where('title', '==', boardToEdit))
+        const docSnap = await getDocs(q)
+        let boardEditData = []
+        docSnap.forEach((boardEditDoc) => {
+          return boardEditData.push({
+            id: boardEditDoc.id,
+            data: boardEditDoc.data(),
+          })
+        })
+        setEditData(boardEditData);
+      } catch (error) {
+        console.log(error)
+      }
+  }
+
   useEffect(() => {
     fetchData()
-  }, [user, loading, userDocId])
+    if (boardToEdit) {
+      fetchBoardToEdit()
+      console.log(editData);
+    }
+  }, [user, loading, userDocId, boardToEdit])
 
   if(!user) {
     navigate('/login')
@@ -79,10 +104,38 @@ function Boards() {
     return <p>loading...</p>
   }
 
-
+  if(updating) {
+    return (
+      <>
+        <p>// Form to set updated data</p>
+        <form>
+          <input type="text" placeholder="title"
+          // placeholder={editData[0].data.title}
+          />
+          <input type="text" placeholder="color"
+          // placeholder={editData[0].data.note1}
+          />
+          <input type="text" placeholder="note1"
+          // placeholder={editData[0].data.note1}
+          />
+          <input type="text" placeholder="note2"
+          // placeholder={editData[0].data.note2}
+          />
+          <input type="text" placeholder="note3"
+          // placeholder={editData[0].data.note3}
+          />
+        </form>
+        <button onClick={() => {
+          setUpdating(false)
+          setBoardToEdit()
+        }}>Done</button>
+      </>
+    )
+  }
 
   if(boards) {
     return (
+      <>
       <div>
         {boards.map((board, id) => (
           <div key={board.id}>
@@ -90,14 +143,30 @@ function Boards() {
             <p>{board.data.note1}</p>
             <p>{board.data.note2}</p>
             <p>{board.data.note3}</p>
-            <br />
+            <button onClick={() => {
+              setBoardToEdit(board.data.title)
+              setUpdating(true)
+            }}>Edit</button>
+            <br /> <br />
           </div>
         ))}
         <br />
         <button><Link to='/create-board'>Create Boards</Link></button>
       </div>
+    </>
     )
-  }
-}
+}}
 
 export default Boards
+
+      {/* <form>
+        {boards.map((board, id) => (
+          <div key={board.id}>
+            <input type="text" placeholder={board.data.title}/>
+            <input type="text" placeholder={board.data.note1}/>
+            <input type="text" placeholder={board.data.note2}/>
+            <input type="text" placeholder={board.data.note3}/>
+            <br />
+          </div>
+        ))}
+      </form> */}
