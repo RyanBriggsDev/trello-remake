@@ -1,9 +1,9 @@
 import { toast } from "react-toastify"
 import { useAuthState } from "react-firebase-hooks/auth";
 import {auth, db } from '../firebase'
-import { useState, useEffect, useSyncExternalStore } from "react";
+import { useState, useEffect } from "react";
 import { query, collection, where, getDocs  } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
 
 function Boards() {
 
@@ -11,7 +11,15 @@ function Boards() {
   const [loading, setLoading] = useState(true);
   const [boards, setBoards] = useState(null);
   const [userDocId, setUserDocId] = useState(null)
-
+  // for updating data
+  const [updateData, setUpdateData] = useState({
+    title: '',
+    color: '',
+    note1: '',
+    note2: '',
+    note3: '',
+    user: user,
+  })
 
   const navigate = useNavigate();
 
@@ -63,9 +71,15 @@ function Boards() {
     fetchData()
   }, [user, loading, userDocId])
 
+  if(!user) {
+    navigate('/login')
+  }
+
   if (loading) {
     return <p>loading...</p>
   }
+
+
 
   if(boards) {
     return (
@@ -75,24 +89,15 @@ function Boards() {
             <h3>{board.data.title}</h3>
             <p>{board.data.note1}</p>
             <p>{board.data.note2}</p>
+            <p>{board.data.note3}</p>
+            <br />
           </div>
         ))}
+        <br />
+        <button><Link to='/create-board'>Create Boards</Link></button>
       </div>
     )
   }
 }
 
 export default Boards
-
-
-  // const fetchUserName = async () => {
-  //   try {
-  //     const q = query(collection(db, "users"), where("uid", "==", user?.uid));
-  //     const doc = await getDocs(q);
-  //     const data = doc.docs[0].data();
-  //     setName(data.name);
-  //   } catch (err) {
-  //     console.error(err);
-  //     alert("An error occured while fetching user data");
-  //   }
-  // };

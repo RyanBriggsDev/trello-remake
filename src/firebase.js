@@ -81,7 +81,6 @@ const logout = () => {
     toast.success('User logged out')
   };
 
-
 export {
   auth,
   db,

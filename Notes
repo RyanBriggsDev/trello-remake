@@ -6,11 +6,9 @@
 - Homepage
 - Import boards from firebase
 
-
 19-8-22
 - Fixed navbar/login issue again
 - Board creation
-
 
 20-8-22
 - Conditional display for button on home page
@@ -18,9 +16,21 @@
 - discovered another login display bug, going to move this to a context file so the auth status is consistent.
 - Boilerplate for context api
 
-
 23-8-22
 - auth issue resolved
 
 24-8-22
+- Made a function to find auto generated doc ID from firebase. Surprised there isn't an easier way to do this, honestly.
+
+25-8-22
+- Setup very basic boards page to view data imported from firebase
+- Setup form to add boards/notes to firebase. 
+- This is all authenticated and secure. 
+
+- Need to add a way for user to update boards/notes
+- Users should be able to add as many notes to a board as they want. 
+- Users should be able to drag and drop notes to other boards.
+- Make a 'board' component to present boards on /boards page. 
+- Add a example of the board we're making on /create-board beside the form
+- Obviously UI styling, etc once functionality is complete
 - 
