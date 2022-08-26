@@ -27,6 +27,9 @@
 - Setup form to add boards/notes to firebase. 
 - This is all authenticated and secure. 
 
+26-8-22
+- added form css
+
 - Need to add a way for user to update boards/notes
 - Users should be able to add as many notes to a board as they want. 
 - Users should be able to drag and drop notes to other boards.
