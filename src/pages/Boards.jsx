@@ -92,7 +92,6 @@ function Boards() {
     fetchData()
     if (boardToEdit) {
       fetchBoardToEdit()
-      console.log(editData);
     }
   }, [user, loading, userDocId, boardToEdit])
 

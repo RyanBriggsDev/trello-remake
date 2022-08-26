@@ -1,5 +1,4 @@
 import { serverTimestamp, doc, addDoc, collection, getDoc, getDocs, query, where } from "firebase/firestore"
-import { getAuth } from 'firebase/auth'
 import { useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { toast } from "react-toastify"
@@ -67,7 +66,7 @@ function CreateBoard() {
         }))
       }
 
-      const onSubmit = async (e) => {
+      const onClick = async (e) => {
         e.preventDefault()
         formData.timestamp = serverTimestamp()
         const boardsRef = await addDoc(collection(db, `users/${userDocId}/boards`), formData)
@@ -81,25 +80,24 @@ function CreateBoard() {
 
       if(user) {
         return (
-        <main>
-          <div className="form-div">
-            <form onSubmit={onSubmit}>
-              <input type="text" id='title' value={title} onChange={onChange} placeholder='Name your board' required/><br />
-              <input type="text" id='color' value={color} onChange={onChange} placeholder='Choose a board color' required/> <br />
-              <input type="text" id='note3' value={note3} onChange={onChange} placeholder='Note 1' required/> <br />
-              <input type="text" id='note1' value={note1} onChange={onChange} placeholder='Note 2' required/><br />
-              <input type="text" id='note2' value={note2} onChange={onChange} placeholder='Note 3' required/><br />
-              <button>Submit</button>
-            </form>
+          <div className="center">
+            <div className="form-container">
+              <div className="form-div">
+                  <input type="text" className="form-input" id='title' value={title} onChange={onChange} placeholder='Name your board' required/><br />
+                  <input type="text" className="form-input" id='color' value={color} onChange={onChange} placeholder='Choose a board color' required/> <br />
+                  <input type="text" className="form-input" id='note3' value={note3} onChange={onChange} placeholder='Note 1'/> <br />
+                  <input type="text" className="form-input" id='note1' value={note1} onChange={onChange} placeholder='Note 2'/><br />
+                  <input type="text" className="form-input" id='note2' value={note2} onChange={onChange} placeholder='Note 3'/><br />
+                  <button className="btn btn-primary" onClick={onClick}>Submit</button>
+              </div>
+              <div className="board-display-div" >
+                <h3>{title}</h3>
+              </div>
+            </div>
           </div>
-          <div className="board-display-div" >
-            <h3>{title}</h3>
-          </div>
-        </main>
           
         )
       }
-
-}
+  }
 
 export default CreateBoard
