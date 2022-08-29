@@ -72,6 +72,7 @@ function Boards() {
       }
 
   const fetchBoardToEdit = async () => {
+    // setLoading(true)
       try {
         const q = query(collection(db, `users/${userDocId}/boards`), where('title', '==', boardToEdit))
         const docSnap = await getDocs(q)
@@ -83,6 +84,7 @@ function Boards() {
           })
         })
         setEditData(boardEditData);
+        // setLoading(false)
       } catch (error) {
         console.log(error)
       }
@@ -93,7 +95,7 @@ function Boards() {
     if (boardToEdit) {
       fetchBoardToEdit()
     }
-  }, [user, loading, userDocId, boardToEdit])
+  }, [user, loading, userDocId, boardToEdit, editData, fetchBoardToEdit, fetchData])
 
   if(!user) {
     navigate('/login')
@@ -145,6 +147,7 @@ function Boards() {
             <button onClick={() => {
               setBoardToEdit(board.data.title)
               setUpdating(true)
+              console.log(editData)
             }}>Edit</button>
             <br /> <br />
           </div>
@@ -157,15 +160,3 @@ function Boards() {
 }}
 
 export default Boards
-
-      {/* <form>
-        {boards.map((board, id) => (
-          <div key={board.id}>
-            <input type="text" placeholder={board.data.title}/>
-            <input type="text" placeholder={board.data.note1}/>
-            <input type="text" placeholder={board.data.note2}/>
-            <input type="text" placeholder={board.data.note3}/>
-            <br />
-          </div>
-        ))}
-      </form> */}

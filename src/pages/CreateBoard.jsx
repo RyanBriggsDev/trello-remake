@@ -80,18 +80,27 @@ function CreateBoard() {
 
       if(user) {
         return (
-          <div className="center">
-            <div className="form-container">
-              <div className="form-div">
-                  <input type="text" className="form-input" id='title' value={title} onChange={onChange} placeholder='Name your board' required/><br />
-                  <input type="text" className="form-input" id='color' value={color} onChange={onChange} placeholder='Choose a board color' required/> <br />
-                  <input type="text" className="form-input" id='note3' value={note3} onChange={onChange} placeholder='Note 1'/> <br />
-                  <input type="text" className="form-input" id='note1' value={note1} onChange={onChange} placeholder='Note 2'/><br />
-                  <input type="text" className="form-input" id='note2' value={note2} onChange={onChange} placeholder='Note 3'/><br />
-                  <button className="btn btn-primary" onClick={onClick}>Submit</button>
+          <div className="create-board-container">
+            <div className="left">
+              <div className="form-container mw-50">
+                <div className="form-div w-100">
+                    <input type="text" className="form-input" id='title' value={title} onChange={onChange} placeholder='Name your board' required/><br />
+                    <input type="text" className="form-input" id='color' value={color} onChange={onChange} placeholder='Choose a board color' required/> <br />
+                    <input type="text" className="form-input" id='note1' value={note1} onChange={onChange} placeholder='Note 1'/> <br />
+                    <input type="text" className="form-input" id='note2' value={note2} onChange={onChange} placeholder='Note 2'/><br />
+                    <input type="text" className="form-input" id='note3' value={note3} onChange={onChange} placeholder='Note 3'/><br />
+                    <button className="btn btn-primary" onClick={onClick}>Submit</button>
+                </div>
               </div>
-              <div className="board-display-div" >
-                <h3>{title}</h3>
+            </div>
+            <div className="right">
+              <div className="form-container mw-50 h-100">
+                <div className="form-div w-100 h-100 space-between" style={{background: color}}>
+                  <h3>{title}</h3>
+                  <p>{note1}</p>
+                  <p>{note2}</p>
+                  <p>{note3}</p>
+                </div>
               </div>
             </div>
           </div>
