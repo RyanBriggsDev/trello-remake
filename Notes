@@ -30,10 +30,14 @@
 26-8-22
 - added form css
 
+29-8-22
+- added styling to create form page
+- added styling for my boards page
+- 
+
 - Need to add a way for user to update boards/notes
 - Users should be able to add as many notes to a board as they want. 
 - Users should be able to drag and drop notes to other boards.
 - Make a 'board' component to present boards on /boards page. 
 - Add a example of the board we're making on /create-board beside the form
 - Obviously UI styling, etc once functionality is complete
-- 

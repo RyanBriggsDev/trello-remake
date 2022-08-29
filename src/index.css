@@ -155,6 +155,31 @@ nav .nav-right {
   border-radius: 5px;
 }
 
+/* boards page */
+
+.boards-container {
+  background-color: rgb(228, 228, 228);
+  box-shadow: black 0 0 2.5px;
+  border-radius: 5px;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.board-div {
+  border-radius: 5px;
+  padding: 15px;
+  margin: 15px;
+}
+
+.board-title {
+  background-color: white;
+  border-radius: 100% 0% 100% 0% / 20% 91% 9% 80%;
+  padding: 5px;
+  text-align: center;
+}
+
+
 /* footer */
 
 footer {

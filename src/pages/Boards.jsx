@@ -95,7 +95,7 @@ function Boards() {
     if (boardToEdit) {
       fetchBoardToEdit()
     }
-  }, [user, loading, userDocId, boardToEdit, editData, fetchBoardToEdit, fetchData])
+  }, [user, loading, userDocId, boardToEdit, editData])
 
   if(!user) {
     navigate('/login')
@@ -137,10 +137,12 @@ function Boards() {
   if(boards) {
     return (
       <>
-      <div>
+      <div className="boards-container">
         {boards.map((board, id) => (
-          <div key={board.id}>
-            <h3>{board.data.title}</h3>
+          <div key={board.id} className='board-div' style={{background: board.data.color}}>
+            <div className="board-title">
+              <h3>{board.data.title}</h3>
+            </div>
             <p>{board.data.note1}</p>
             <p>{board.data.note2}</p>
             <p>{board.data.note3}</p>
@@ -153,8 +155,8 @@ function Boards() {
           </div>
         ))}
         <br />
-        <button><Link to='/create-board'>Create Boards</Link></button>
       </div>
+      <button><Link to='/create-board'>Create Boards</Link></button>
     </>
     )
 }}
