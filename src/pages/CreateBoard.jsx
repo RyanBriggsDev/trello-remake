@@ -95,11 +95,11 @@ function CreateBoard() {
             </div>
             <div className="right">
               <div className="form-container mw-50 h-100">
-                <div className="form-div w-100 h-100 space-between" style={{background: color}}>
-                  <h3>{title}</h3>
-                  <p>{note1}</p>
-                  <p>{note2}</p>
-                  <p>{note3}</p>
+                <div className="form-div w-100 h-100 space-between px-15" style={{background: color}}>
+                  <h3 className="board-title">{title}</h3>
+                  <p className="board-note">{note1}</p>
+                  <p className="board-note">{note2}</p>
+                  <p className="board-note">{note3}</p>
                 </div>
               </div>
             </div>

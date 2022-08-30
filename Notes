@@ -32,8 +32,10 @@
 
 29-8-22
 - added styling to create form page
-- added styling for my boards page
-- 
+- added styling for boards page
+
+30-8-22
+- responsiveness for boards page
 
 - Need to add a way for user to update boards/notes
 - Users should be able to add as many notes to a board as they want. 

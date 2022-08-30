@@ -35,6 +35,11 @@ a, ul, li {
 
 .btn {
   width: 100%;
+  border: 1px rgb(101, 101, 101) solid;
+  border-radius: 5px;
+  box-shadow: none;
+  padding: 5px 15px;
+  font-size: 1.1rem;
 }
 
 .btn:hover {
@@ -65,8 +70,16 @@ a, ul, li {
   height: 100%;
 }
 
+.mt-5 {
+  margin-top: 5px;
+}
+
 .fd-row {
   flex-direction: row;
+}
+
+.px-15 {
+  padding: 15px;
 }
 
 .space-between {
@@ -158,8 +171,6 @@ nav .nav-right {
 /* boards page */
 
 .boards-container {
-  background-color: rgb(228, 228, 228);
-  box-shadow: black 0 0 2.5px;
   border-radius: 5px;
   padding: 30px;
   display: grid;
@@ -167,18 +178,46 @@ nav .nav-right {
 }
 
 .board-div {
+  box-shadow: rgb(221, 221, 221) 1px 1px 5px;
   border-radius: 5px;
-  padding: 15px;
+  padding: 15px 10px 15px 10px;
   margin: 15px;
 }
 
 .board-title {
   background-color: white;
-  border-radius: 100% 0% 100% 0% / 20% 91% 9% 80%;
+  border-radius: 50px;
+  clip-path: polygon(4% 0, 100% 0%, 95% 100%, 0% 100%);
+  box-shadow: rgb(221, 221, 221) 1px 1px 5px;
   padding: 5px;
   text-align: center;
 }
 
+.board-note {
+  background-color: white;
+  border-radius: 50px;
+  clip-path: polygon(4% 0, 100% 0%, 95% 100%, 0% 100%);
+  box-shadow: rgb(221, 221, 221) 1px 1px 5px;
+  padding: 5px;
+  text-align: center;
+  margin: 2px 0;
+}
+
+@media (max-width: 900px) {
+  .boards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .board-div {
+    margin: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .boards-container {
+    grid-template-columns: 1fr;
+    padding: 5px;
+  }
+}
 
 /* footer */
 

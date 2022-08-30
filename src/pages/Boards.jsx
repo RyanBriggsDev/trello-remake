@@ -143,15 +143,16 @@ function Boards() {
             <div className="board-title">
               <h3>{board.data.title}</h3>
             </div>
-            <p>{board.data.note1}</p>
-            <p>{board.data.note2}</p>
-            <p>{board.data.note3}</p>
-            <button onClick={() => {
-              setBoardToEdit(board.data.title)
-              setUpdating(true)
-              console.log(editData)
+            <p className="board-note">{board.data.note1}</p>
+            <p className="board-note">{board.data.note2}</p>
+            <p className="board-note">{board.data.note3}</p>
+            <button 
+              className="btn btn-primary"
+              onClick={() => {
+                setBoardToEdit(board.data.title)
+                setUpdating(true)
+                console.log(editData)
             }}>Edit</button>
-            <br /> <br />
           </div>
         ))}
         <br />
