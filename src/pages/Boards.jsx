@@ -12,8 +12,9 @@ function Boards() {
   const [boards, setBoards] = useState(null);
   const [userDocId, setUserDocId] = useState(null)
   const [updating, setUpdating] = useState(false)
-  const [boardToEdit, setBoardToEdit] = useState()
-  const [editData, setEditData] = useState()
+  const [boardToEdit, setBoardToEdit] = useState(null)
+  const [editData, setEditData] = useState(null)
+  const [editedDataToUpload, setEditedDataToUpload] = useState()
 
   // for updating data
   const [updateData, setUpdateData] = useState({
@@ -24,6 +25,13 @@ function Boards() {
     note3: '',
     user: ''
   })
+
+  const onEditChange = (e) => {
+    setBoards((prevState) => ({
+      ...prevState,
+    }))
+    console.log(boards);
+  }
 
   const navigate = useNavigate();
 
@@ -72,7 +80,6 @@ function Boards() {
       }
 
   const fetchBoardToEdit = async () => {
-    // setLoading(true)
       try {
         const q = query(collection(db, `users/${userDocId}/boards`), where('title', '==', boardToEdit))
         const docSnap = await getDocs(q)
@@ -84,7 +91,7 @@ function Boards() {
           })
         })
         setEditData(boardEditData);
-        // setLoading(false)
+        setLoading(false)
       } catch (error) {
         console.log(error)
       }
@@ -92,10 +99,10 @@ function Boards() {
 
   useEffect(() => {
     fetchData()
-    if (boardToEdit) {
-      fetchBoardToEdit()
-    }
-  }, [user, loading, userDocId, boardToEdit, editData])
+      if (boardToEdit) {
+        fetchBoardToEdit()
+      }
+  }, [user, loading, userDocId, boardToEdit])
 
   if(!user) {
     navigate('/login')
@@ -105,30 +112,27 @@ function Boards() {
     return <p>loading...</p>
   }
 
-  if(updating) {
+  if(updating && editData) {
     return (
       <>
-        <p>// Form to set updated data</p>
+        <h1>{editData[0].data.title}</h1>
         <form>
-          <input type="text" placeholder="title"
-          // placeholder={editData[0].data.title}
+          <input type="text" placeholder={editData[0].data.title}
           />
-          <input type="text" placeholder="color"
-          // placeholder={editData[0].data.note1}
+          <input type="text" placeholder={editData[0].data.color}
           />
-          <input type="text" placeholder="note1"
-          // placeholder={editData[0].data.note1}
+          <input type="text" placeholder={editData[0].data.note1}
           />
-          <input type="text" placeholder="note2"
-          // placeholder={editData[0].data.note2}
+          <input type="text" placeholder={editData[0].data.note2}
           />
-          <input type="text" placeholder="note3"
-          // placeholder={editData[0].data.note3}
+          <input type="text" placeholder={editData[0].data.note3}
           />
         </form>
         <button onClick={() => {
+          setLoading(true)
           setUpdating(false)
-          setBoardToEdit()
+          setBoardToEdit(null)
+          onEditChange()
         }}>Done</button>
       </>
     )
