@@ -14,24 +14,9 @@ function Boards() {
   const [updating, setUpdating] = useState(false)
   const [boardToEdit, setBoardToEdit] = useState(null)
   const [editData, setEditData] = useState(null)
-  const [editedDataToUpload, setEditedDataToUpload] = useState()
 
   // for updating data
-  const [updateData, setUpdateData] = useState({
-    title: '',
-    color: '',
-    note1: '',
-    note2: '',
-    note3: '',
-    user: ''
-  })
-
-  const onEditChange = (e) => {
-    setBoards((prevState) => ({
-      ...prevState,
-    }))
-    console.log(boards);
-  }
+  const [updateData, setUpdateData] = useState()
 
   const navigate = useNavigate();
 
@@ -97,11 +82,45 @@ function Boards() {
       }
   }
 
+  // Edit stuff
+
+  const [editedFormData, setEditedFormData] = useState({
+    title: '',
+    color: '',
+    note1: '',
+    note2: '',
+    note3: '',
+    user: ''
+})
+
+const { color, title, note1, note2, note3 } = editedFormData
+
+  const onEditChange = (e) => {
+    setEditedFormData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1),
+      user: user.uid
+    }))
+  }
+
+  const onEditSubmit = () => {
+    setUpdateData(() => ({
+      boards,
+      editedFormData,
+    }))
+    console.log(updateData);
+  }
+
+
+
+
+
   useEffect(() => {
     fetchData()
       if (boardToEdit) {
         fetchBoardToEdit()
       }
+      console.log(updateData)
   }, [user, loading, userDocId, boardToEdit])
 
   if(!user) {
@@ -117,22 +136,22 @@ function Boards() {
       <>
         <h1>{editData[0].data.title}</h1>
         <form>
-          <input type="text" placeholder={editData[0].data.title}
+          <input type="text" placeholder={editData[0].data.title} id='title' value={title} onChange={onEditChange}
           />
-          <input type="text" placeholder={editData[0].data.color}
+          <input type="text" placeholder={editData[0].data.color} id='color' value={color} onChange={onEditChange}
           />
-          <input type="text" placeholder={editData[0].data.note1}
+          <input type="text" placeholder={editData[0].data.note1} id='note1' value={note1} onChange={onEditChange}
           />
-          <input type="text" placeholder={editData[0].data.note2}
+          <input type="text" placeholder={editData[0].data.note2} id='note2' value={note2} onChange={onEditChange}
           />
-          <input type="text" placeholder={editData[0].data.note3}
+          <input type="text" placeholder={editData[0].data.note3} id='note3' value={note3} onChange={onEditChange}
           />
         </form>
         <button onClick={() => {
           setLoading(true)
           setUpdating(false)
           setBoardToEdit(null)
-          onEditChange()
+          onEditSubmit()
         }}>Done</button>
       </>
     )
@@ -155,7 +174,6 @@ function Boards() {
               onClick={() => {
                 setBoardToEdit(board.data.title)
                 setUpdating(true)
-                console.log(editData)
             }}>Edit</button>
           </div>
         ))}
