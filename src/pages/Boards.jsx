@@ -104,11 +104,11 @@ const { color, title, note1, note2, note3 } = editedFormData
   }
 
   const onEditSubmit = () => {
+    setBoards(boards, editedFormData)
     setUpdateData(() => ({
-      boards,
-      editedFormData,
+      editedFormData, 
     }))
-    console.log(updateData);
+    console.log(boards);
   }
 
 
@@ -120,7 +120,6 @@ const { color, title, note1, note2, note3 } = editedFormData
       if (boardToEdit) {
         fetchBoardToEdit()
       }
-      console.log(updateData)
   }, [user, loading, userDocId, boardToEdit])
 
   if(!user) {
@@ -180,6 +179,7 @@ const { color, title, note1, note2, note3 } = editedFormData
         <br />
       </div>
       <button><Link to='/create-board'>Create Boards</Link></button>
+      <button onClick={console.log(boards)}>CLG Boards</button>
     </>
     )
 }}
