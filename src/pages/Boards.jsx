@@ -16,7 +16,7 @@ function Boards() {
   const [editData, setEditData] = useState(null)
 
   // for updating data
-  const [updateData, setUpdateData] = useState()
+  const [updateData, setUpdateData] = useState(null)
 
   const navigate = useNavigate();
 
@@ -104,12 +104,31 @@ const { color, title, note1, note2, note3 } = editedFormData
   }
 
   const onEditSubmit = () => {
-    setBoards(boards, editedFormData)
-    setUpdateData(() => ({
-      editedFormData, 
-    }))
-    console.log(boards);
+    console.log('Submit' + console.log(updateData));
   }
+
+  useEffect(() => {
+    if (boardToEdit) {
+      setUpdateData(boards)
+      
+    }
+  }, [boardToEdit])
+
+
+
+
+
+  const arr = [{id: 1}, {id: 3}, {id: 5}];
+
+  const indexOfObject = arr.findIndex(object => {
+    return object.id === 3;
+  });
+  
+  console.log(indexOfObject); // 👉️ 1
+  
+  arr.splice(indexOfObject, 1);
+  
+  console.log(arr); // 👉️ [{id: 1}, {id: 5}]
 
 
 
@@ -120,7 +139,10 @@ const { color, title, note1, note2, note3 } = editedFormData
       if (boardToEdit) {
         fetchBoardToEdit()
       }
-  }, [user, loading, userDocId, boardToEdit])
+      if (updateData !== null) {
+        console.log(updateData)
+      }
+  }, [user, loading, userDocId, boardToEdit, updateData])
 
   if(!user) {
     navigate('/login')
@@ -179,7 +201,7 @@ const { color, title, note1, note2, note3 } = editedFormData
         <br />
       </div>
       <button><Link to='/create-board'>Create Boards</Link></button>
-      <button onClick={console.log(boards)}>CLG Boards</button>
+      {/* <button onClick={console.log(boards)}>CLG Boards</button> */}
     </>
     )
 }}
