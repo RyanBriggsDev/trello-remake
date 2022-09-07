@@ -2,7 +2,7 @@ import { toast } from "react-toastify"
 import { useAuthState } from "react-firebase-hooks/auth";
 import {auth, db } from '../firebase'
 import { useState, useEffect } from "react";
-import { query, collection, where, getDocs  } from "firebase/firestore";
+import { query, collection, where, getDocs, updateDoc  } from "firebase/firestore";
 import { useNavigate, Link} from "react-router-dom";
 
 function Boards() {
@@ -64,33 +64,33 @@ function Boards() {
         }
       }
 
-  const fetchBoardToEdit = async () => {
-      try {
-        const q = query(collection(db, `users/${userDocId}/boards`), where('title', '==', boardToEdit))
-        const docSnap = await getDocs(q)
-        let boardEditData = []
-        docSnap.forEach((boardEditDoc) => {
-          return boardEditData.push({
-            id: boardEditDoc.id,
-            data: boardEditDoc.data(),
-          })
-        })
-        setEditData(boardEditData);
-        setLoading(false)
-      } catch (error) {
-        console.log(error)
-      }
-  }
-
   // Edit stuff
 
+  const fetchBoardToEdit = async () => {
+    try {
+      const q = query(collection(db, `users/${userDocId}/boards`), where('title', '==', boardToEdit))
+      const docSnap = await getDocs(q)
+      let boardEditData = []
+      docSnap.forEach((boardEditDoc) => {
+        return boardEditData.push({
+          id: boardEditDoc.id,
+          data: boardEditDoc.data(),
+        })
+      })
+      setEditData(boardEditData);
+      setLoading(false)
+    } catch (error) {
+      console.log(error)
+    }
+}
+
   const [editedFormData, setEditedFormData] = useState({
-    title: '',
-    color: '',
-    note1: '',
-    note2: '',
-    note3: '',
-    user: ''
+      title: '',
+      color: '',
+      note1: '',
+      note2: '',
+      note3: '',
+      user: ''
 })
 
 const { color, title, note1, note2, note3 } = editedFormData
@@ -98,39 +98,38 @@ const { color, title, note1, note2, note3 } = editedFormData
   const onEditChange = (e) => {
     setEditedFormData((prevState) => ({
       ...prevState,
-      [e.target.id]: e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1),
+        [e.target.id]: e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1),
       user: user.uid
     }))
-  }
-
-  const onEditSubmit = () => {
-    console.log('Submit' + console.log(updateData));
   }
 
   useEffect(() => {
     if (boardToEdit) {
       setUpdateData(boards)
-      
+      if (updateData) {
+        // remove selected data to edit and add other boards to updateData state
+        const indexOfObject = updateData.findIndex(data => {
+          return data.data.title === boardToEdit;
+        }); 
+        updateData.splice(indexOfObject, 1);
+        console.log(updateData);
+      }
     }
-  }, [boardToEdit])
+  }, [boardToEdit, updateData])
 
 
-
-
-
-  const arr = [{id: 1}, {id: 3}, {id: 5}];
-
-  const indexOfObject = arr.findIndex(object => {
-    return object.id === 3;
-  });
+  // Upload edit data
+  const onEditSubmit = async () => {
+    await updateData.push(editedFormData )
+    try {
+      const q = query(collection(db, `users/${userDocId}/boards`), where('title', '==', boardToEdit))
+      await updateDoc(q, editedFormData)
+      console.log('success');
   
-  console.log(indexOfObject); // 👉️ 1
-  
-  arr.splice(indexOfObject, 1);
-  
-  console.log(arr); // 👉️ [{id: 1}, {id: 5}]
-
-
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
 
 
@@ -157,15 +156,15 @@ const { color, title, note1, note2, note3 } = editedFormData
       <>
         <h1>{editData[0].data.title}</h1>
         <form>
-          <input type="text" placeholder={editData[0].data.title} id='title' value={title} onChange={onEditChange}
+          <input type="text" placeholder={editData[0].data.title} id='title' value={title} onChange={onEditChange} required
           />
-          <input type="text" placeholder={editData[0].data.color} id='color' value={color} onChange={onEditChange}
+          <input type="text" placeholder={editData[0].data.color} id='color' value={color} onChange={onEditChange} required
           />
-          <input type="text" placeholder={editData[0].data.note1} id='note1' value={note1} onChange={onEditChange}
+          <input type="text" placeholder={editData[0].data.note1} id='note1' value={note1} onChange={onEditChange} required
           />
-          <input type="text" placeholder={editData[0].data.note2} id='note2' value={note2} onChange={onEditChange}
+          <input type="text" placeholder={editData[0].data.note2} id='note2' value={note2} onChange={onEditChange} required
           />
-          <input type="text" placeholder={editData[0].data.note3} id='note3' value={note3} onChange={onEditChange}
+          <input type="text" placeholder={editData[0].data.note3} id='note3' value={note3} onChange={onEditChange} required
           />
         </form>
         <button onClick={() => {
@@ -201,7 +200,6 @@ const { color, title, note1, note2, note3 } = editedFormData
         <br />
       </div>
       <button><Link to='/create-board'>Create Boards</Link></button>
-      {/* <button onClick={console.log(boards)}>CLG Boards</button> */}
     </>
     )
 }}
