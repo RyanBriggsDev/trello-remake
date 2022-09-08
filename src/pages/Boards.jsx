@@ -2,22 +2,21 @@ import { toast } from "react-toastify"
 import { useAuthState } from "react-firebase-hooks/auth";
 import {auth, db } from '../firebase'
 import { useState, useEffect } from "react";
-import { query, collection, where, getDocs, updateDoc  } from "firebase/firestore";
+import { query, collection, where, getDocs, updateDoc, setDoc, serverTimestamp, doc} from "firebase/firestore";
 import { useNavigate, Link} from "react-router-dom";
 
 function Boards() {
 
   const [user, error] = useAuthState(auth);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [boards, setBoards] = useState(null);
   const [userDocId, setUserDocId] = useState(null)
   const [updating, setUpdating] = useState(false)
   const [boardToEdit, setBoardToEdit] = useState(null)
   const [editData, setEditData] = useState(null)
+  const [boardToEditID, setBoardToEditID] = useState(null)
 
   // for updating data
-  const [updateData, setUpdateData] = useState(null)
-
   const navigate = useNavigate();
 
   // FETCH USER
@@ -43,7 +42,7 @@ function Boards() {
     }
 
         // fetch boards/notes
-        if (userDocId !== null) {
+        if (userDocId) {
           try {
             const q = query(collection(db, `users/${userDocId}/boards`), 
             )
@@ -72,6 +71,7 @@ function Boards() {
       const docSnap = await getDocs(q)
       let boardEditData = []
       docSnap.forEach((boardEditDoc) => {
+        setBoardToEditID(boardEditDoc.id)
         return boardEditData.push({
           id: boardEditDoc.id,
           data: boardEditDoc.data(),
@@ -90,7 +90,8 @@ function Boards() {
       note1: '',
       note2: '',
       note3: '',
-      user: ''
+      user: '',
+      timestamp: null
 })
 
 const { color, title, note1, note2, note3 } = editedFormData
@@ -99,49 +100,28 @@ const { color, title, note1, note2, note3 } = editedFormData
     setEditedFormData((prevState) => ({
       ...prevState,
         [e.target.id]: e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1),
-      user: user.uid
+      user: user.uid,
+      timestamp: serverTimestamp()
     }))
   }
-
-  useEffect(() => {
-    if (boardToEdit) {
-      setUpdateData(boards)
-      if (updateData) {
-        // remove selected data to edit and add other boards to updateData state
-        const indexOfObject = updateData.findIndex(data => {
-          return data.data.title === boardToEdit;
-        }); 
-        updateData.splice(indexOfObject, 1);
-        console.log(updateData);
-      }
-    }
-  }, [boardToEdit, updateData])
 
 
   // Upload edit data
   const onEditSubmit = async () => {
-    await updateData.push(editedFormData )
     try {
-      const q = query(collection(db, `users/${userDocId}/boards`), where('title', '==', boardToEdit))
-      await updateDoc(q, editedFormData)
-      console.log('success');
-  
+      const docRef = doc(db, `users/${userDocId}/boards`, `${boardToEditID}`)
+      await setDoc(docRef, editedFormData)
     } catch (error) {
       console.log(error)
     }
   }
-
-
 
   useEffect(() => {
     fetchData()
       if (boardToEdit) {
         fetchBoardToEdit()
       }
-      if (updateData !== null) {
-        console.log(updateData)
-      }
-  }, [user, loading, userDocId, boardToEdit, updateData])
+  }, [user, loading, userDocId, boardToEdit, boards])
 
   if(!user) {
     navigate('/login')
@@ -168,9 +148,8 @@ const { color, title, note1, note2, note3 } = editedFormData
           />
         </form>
         <button onClick={() => {
-          setLoading(true)
           setUpdating(false)
-          setBoardToEdit(null)
+          // setBoardToEdit(null)
           onEditSubmit()
         }}>Done</button>
       </>
