@@ -136,22 +136,29 @@ const { color, title, note1, note2, note3 } = editedFormData
       <>
         <h1>{editData[0].data.title}</h1>
         <form>
-          <input type="text" placeholder={editData[0].data.title} id='title' value={title} onChange={onEditChange} required
+          <input type="text" placeholder={editData[0].data.title} id='title' value={title} onChange={onEditChange} 
           />
-          <input type="text" placeholder={editData[0].data.color} id='color' value={color} onChange={onEditChange} required
+          <input type="text" placeholder={editData[0].data.color} id='color' value={color} onChange={onEditChange}
           />
-          <input type="text" placeholder={editData[0].data.note1} id='note1' value={note1} onChange={onEditChange} required
+          <input type="text" placeholder={editData[0].data.note1} id='note1' value={note1} onChange={onEditChange}
           />
-          <input type="text" placeholder={editData[0].data.note2} id='note2' value={note2} onChange={onEditChange} required
+          <input type="text" placeholder={editData[0].data.note2} id='note2' value={note2} onChange={onEditChange}
           />
-          <input type="text" placeholder={editData[0].data.note3} id='note3' value={note3} onChange={onEditChange} required
+          <input type="text" placeholder={editData[0].data.note3} id='note3' value={note3} onChange={onEditChange}
           />
         </form>
         <button onClick={() => {
-          setUpdating(false)
-          // setBoardToEdit(null)
-          onEditSubmit()
+          if(note3) {
+            setUpdating(false)
+            onEditSubmit()
+          } else {
+            toast.error('Failed to update')
+          }
         }}>Done</button>
+        <button onClick={() => {
+          setBoardToEdit(null)
+          setUpdating(false)
+        }}>Cancel</button>
       </>
     )
   }
@@ -161,7 +168,7 @@ const { color, title, note1, note2, note3 } = editedFormData
       <>
       <div className="boards-container">
         {boards.map((board, id) => (
-          <div key={board.id} className='board-div' style={{background: board.data.color}}>
+          <div key={board.id} className='board-div' style={board.data.color ? {background: board.data.color} : {background: 'whitesmoke'}}>
             <div className="board-title">
               <h3>{board.data.title}</h3>
             </div>
