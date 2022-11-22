@@ -1,0 +1,55 @@
+/* fonts */
+
+@font-face {
+    font-family: PoppinsReg;
+    src: url('../assets/fonts/Poppins/Poppins-Regular.ttf');
+}
+
+/* html elements */
+
+*::before, *::after, * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a, ul, li {
+    list-style-type: none;
+    text-decoration: none;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0.5rem 0;
+}
+
+
+/* layout */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: PoppinsReg;
+}
+
+.layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.content {
+    width: 100%;
+    max-width: 1250px;
+    padding: 0 3rem;
+}
