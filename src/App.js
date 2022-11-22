@@ -1,6 +1,6 @@
 
 
-import { AuthProvider } from "./context/AuthContext";
+
 
 import Home from './pages/Home'
 
@@ -11,14 +11,14 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    <AuthProvider>
+    <>
       <ToastContainer />
       <Router>
         <Routes>
           <Route path='/' element={<Home />} />
         </Routes>
       </Router>
-    </AuthProvider>
+    </>
   );
 }
 
