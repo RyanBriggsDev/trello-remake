@@ -1,6 +1,6 @@
-
-
-
+// layout
+import Nav from './components/layout/Nav';
+import Footer from './components/layout/Footer';
 
 import Home from './pages/Home'
 
@@ -14,9 +14,15 @@ function App() {
     <>
       <ToastContainer />
       <Router>
-        <Routes>
-          <Route path='/' element={<Home />} />
-        </Routes>
+        <div className="layout">
+          <Nav />
+          <div className="content">
+            <Routes>
+                <Route path='/' element={<Home />} />
+            </Routes>
+          </div>
+          <Footer />
+        </div>
       </Router>
     </>
   );
