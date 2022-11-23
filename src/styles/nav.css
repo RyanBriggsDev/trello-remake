@@ -3,8 +3,45 @@ nav {
     justify-content: space-between;
     align-items: center;
     margin: 0.5rem;
+    gap: 1rem;
 }
 
-.nav-button {
+/* nav-right */
+.nav-right {
+    display: flex;
+}
+
+.nav-right ul {
+    display: flex;
+    align-items: center;
+}
+
+/* hamburger */
+
+.hamburger {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hamburger .hamburger-line {
+    width: 2rem;
+    height: 2.5px;
+    background-color: #fff;
+    margin: 0.2rem;
+}
+
+/* mobile nav menu */
+
+.mobile-nav-menu {
     
+}
+
+/* media query */
+
+@media screen and (max-width: 40rem) {
+    .hamburger {
+        display: flex;
+    }
 }
