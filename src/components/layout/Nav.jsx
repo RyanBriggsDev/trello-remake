@@ -16,7 +16,7 @@ function Nav() {
             <Link className="btn nav-btn mx_05 inline-block" to='/' id={navOpen ? 'show' : ''}><li>Contact</li></Link>
             <Link className="btn nav-btn mx_05 inline-block" to='/' id={navOpen ? 'show' : ''}><li>About</li></Link>
           </ul>
-          <div className="hamburger" onClick={() => setNavOpen(!navOpen)}>
+          <div className={`hamburger ${navOpen ? 'open' : ''}`} onClick={() => setNavOpen(!navOpen)}>
             <div className="hamburger-line"></div>
             <div className="hamburger-line"></div>
             <div className="hamburger-line"></div>

@@ -24,6 +24,7 @@ nav {
     align-items: center;
     flex-direction: column;
     padding: 0.2rem 0;
+    cursor: pointer;
 }
 
 .hamburger .hamburger-line {
@@ -31,7 +32,25 @@ nav {
     height: 2px;
     background-color: #fff;
     margin: 0.2rem;
+    transition: 300ms ease-in-out;
 }
+
+    /* animation */
+
+    .hamburger.open .hamburger-line:nth-child(1) {
+        transform: rotate(-45deg) translate(-1px, 11px);
+        /* background-color: red */
+    }
+        
+    .hamburger.open .hamburger-line:nth-child(2) {    
+        transform: translateX(-400px) rotateZ(90deg);
+        background: transparent;
+        box-shadow: none;
+    }
+        
+    .hamburger.open .hamburger-line:nth-child(3) {
+        transform: rotate(45deg) translate(0px, -10px);
+    }
 
 /* mobile nav menu */
 
