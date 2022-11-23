@@ -7,7 +7,7 @@ function Nav() {
           <Link className="btn" to='/'>Home</Link>
         </div>
         <div className="nav-right">
-          <ul>
+          <ul className="mobile-nav-menu">
             <Link className="btn nav-btn mx_05 inline-block" to='/'><li>Login</li></Link>
             <Link className="btn nav-btn mx_05 inline-block" to='/'><li>Contact</li></Link>
             <Link className="btn nav-btn mx_05 inline-block" to='/'><li>About</li></Link>

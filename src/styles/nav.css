@@ -35,7 +35,16 @@ nav {
 /* mobile nav menu */
 
 .mobile-nav-menu {
-    
+    position: absolute;
+    width: 100%;
+    top: 2.15rem;
+    left: 0;
+    flex-direction: column;
+}
+
+.mobile-nav-menu a {
+    width: 100%;
+    text-align: center;
 }
 
 /* media query */
