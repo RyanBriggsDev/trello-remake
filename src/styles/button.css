@@ -1,0 +1,9 @@
+.btn {
+    border-radius: 0.5rem;
+    padding: 0.25rem 1rem;
+    transition: 200ms ease-in-out;
+}
+
+.btn:hover {
+    background-color: rgb(60, 60, 60);
+}
