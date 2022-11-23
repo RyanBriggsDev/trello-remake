@@ -16,7 +16,7 @@
 a, ul, li {
     list-style-type: none;
     text-decoration: none;
-    color: white;
+    color: #fff;
     padding: 0;
     margin: 0;
 }
@@ -36,7 +36,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: black;
-    color: white;
+    color: #fff;
     font-family: PoppinsReg;
 }
 
@@ -53,3 +53,16 @@ body {
     max-width: 1250px;
     padding: 0 3rem;
 }
+
+
+/* reusable classes */
+
+.inline-block {
+    display: inline-block;
+}
+
+    /* margin */
+
+    .mx_05 {
+        margin: 0 0.5rem;
+    }
