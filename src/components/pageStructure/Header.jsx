@@ -11,8 +11,7 @@ function Header(props) {
             btnText={props.btnText}
             link={props.link}
           />
-          // <Link to={props.link}><button className="btn btn-primary">{props.btnText}</button></Link> 
-        : 
+        :
           ""
         }
     </header>
