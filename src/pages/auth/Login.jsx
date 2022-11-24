@@ -1,11 +1,21 @@
 import Header from "../../components/pageStructure/Header"
 import { toast } from "react-toastify"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
-import { logInWithEmailAndPassword } from "../../firebase"
-import { signInWithEmailAndPassword } from "firebase/auth"
+import { logInWithEmailAndPassword, auth, logout } from '../../firebase'
+
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function Login() {
+
+  const [user, loading, error] = useAuthState(auth);
+
+  useEffect(() => {
+    if (loading) {
+      return 
+    }
+  }, [user, loading]);
+
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -23,7 +33,7 @@ function Login() {
   const onSubmit = (e) => {
     e.preventDefault()
         try {
-          signInWithEmailAndPassword(email, password)
+          logInWithEmailAndPassword(email, password)
           toast.success('Success!')
         } catch (error) {
             toast.error(error)
@@ -40,7 +50,7 @@ function Login() {
         />
         <section>
             <form className="form form-login">
-                <input className="login-input-one" value={email} onChange={(e) => onChange(e)} id={'email'} type="email" placeholder="Email" />
+                <input className="login-input-oneef" value={email} onChange={(e) => onChange(e)} id={'email'} type="email" placeholder="Email" />
                 <input className="login-input-two last-input" value={password} onChange={(e) => onChange(e)} id={'password'} type="password" placeholder="Password" />
                 <button
                     className="btn btn-primary" 
@@ -48,6 +58,9 @@ function Login() {
                     Login
                 </button>
             </form>
+        </section>
+        <section>
+          <button className="btn btn-primary" onClick={() => logout()}>Logout</button>
         </section>
     </>
   )
