@@ -1,8 +1,15 @@
-
+import Header from "../../components/pageStructure/Header"
 
 function Register() {
   return (
-    <div>Register</div>
+    <>
+        <Header
+            title={'User Registration'}
+            desc={'Register for a free account.'}
+            btnText={'Already have an account? Login.'}
+            link={'/auth/login'}
+        />
+    </>
   )
 }
 
