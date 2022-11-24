@@ -49,7 +49,7 @@ function Register() {
                 <input className="reg-input-one" value={name} onChange={(e) => onChange(e)} id={'name'} type="text" placeholder="Name" />
                 <input className="reg-input-two" value={email} onChange={(e) => onChange(e)} id={'email'} type="email" placeholder="Email" />
                 <input className="reg-input-three" value={password} onChange={(e) => onChange(e)} id={'password'} type="password" placeholder="Password" />
-                <input className="reg-input-four" value={password2} onChange={(e) => onChange(e)} id={'password2'} className="last-input" type="password" placeholder="Confirm Password" />
+                <input className="reg-input-four last-input" value={password2} onChange={(e) => onChange(e)} id={'password2'} type="password" placeholder="Confirm Password" />
                 <button
                     className="btn btn-primary" 
                     onClick={(e) => onSubmit(e)}>
