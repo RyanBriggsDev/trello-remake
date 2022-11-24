@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './styles/global.css';
 import './styles/nav.css';
 import './styles/button.css';
+import './styles/form.css';
 
 import App from './App';
 

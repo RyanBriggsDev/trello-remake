@@ -26,7 +26,7 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    margin: 0.5rem 0;
+    margin: 0;
 }
 
 
@@ -54,6 +54,24 @@ body {
     padding: 0 3rem;
 }
 
+header {
+    margin: 5rem 0;
+}
+
+header > * {
+    margin: 0.5rem 0;
+}
+
+section {
+    margin: 5rem 0;
+}
+
+@media screen and (max-width: 60rem) {
+    .content {
+        padding: 0 1rem;
+    }
+}
+
 
 /* reusable classes */
 
@@ -65,4 +83,8 @@ body {
 
     .mx_05 {
         margin: 0 0.5rem;
+    }
+
+    .my_05 {
+        margin: 0.5rem 0;
     }

@@ -1,0 +1,99 @@
+.form-register, .form-login {
+    background-color: rgb(160, 0, 0);
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.form-register input, .form-login input {
+    padding: 0.5rem 1.5rem;
+    border-radius: none;
+    border: none;
+    font-size: 1rem;
+    border-right: 1px solid white;
+    width: 100%;
+}
+
+.form-register .last-input, .form-login .last-input {
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.form-register .btn-primary, .form-login .btn-primary {
+    min-width: 10rem;
+    text-align: center;
+}
+
+
+.form-register button, .form-login button {
+    grid-area: button;
+}
+
+.reg-input-one, .login-input-one {
+    grid-area: one;
+}
+
+.reg-input-two, .login-input-two {
+    grid-area: two;
+}
+
+.reg-input-three {
+    grid-area: three;
+}
+
+.reg-input-four {
+    grid-area: four;
+}
+
+@media screen and (max-width: 60rem) {
+
+    /* register */
+    .form-register {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        background-color: black;
+        grid-template-areas:
+        "one two"
+        "three four"
+        "button button"
+        ;
+    }
+    .form-register .last-input, .form-login .last-input {
+        border-radius: 0;
+    }
+    .form-register button, .form-login button {
+        border-radius: 0px;
+    }
+    /* login */
+    .form-login {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        background-color: black;
+        grid-template-areas: 
+        "one two"
+        "button button"
+        ;
+    }
+}
+
+@media screen and (max-width: 35rem) {
+    form.form-register {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "one"
+        "two"
+        "three"
+        "four"
+        "button"
+        ;
+    }
+    form.form-login {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "one"
+        "two"
+        "button"
+        ;
+    }
+}
