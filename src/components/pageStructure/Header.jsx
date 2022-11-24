@@ -7,7 +7,7 @@ function Header(props) {
         <p>{props.desc}</p>
         {props.btnText ? 
           <Button
-            btnClass={'btn-primary my_05'}
+            btnClass={'btn-primary'}
             btnText={props.btnText}
             link={props.link}
           />
