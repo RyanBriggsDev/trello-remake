@@ -5,6 +5,7 @@ import Footer from './components/layout/Footer';
 import Home from './pages/Home'
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
+import Dashboard from './pages/user/Dashboard';
 
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 
@@ -23,6 +24,7 @@ function App() {
                 <Route path='/' element={<Home />} />
                 <Route path='/auth/login' element={<Login />} />
                 <Route path='/auth/register' element={<Register />} />
+                <Route path='/user/dashboard' element={<Dashboard />} />
             </Routes>
           </div>
           <Footer />
