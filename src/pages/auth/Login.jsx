@@ -34,7 +34,7 @@ function Login() {
         try {
           logInWithEmailAndPassword(email, password)
           toast.success(`You're logged in.`)
-          navigate('/')
+          navigate('/user/dashboard')
         } catch (error) {
             toast.error(error)
         }
