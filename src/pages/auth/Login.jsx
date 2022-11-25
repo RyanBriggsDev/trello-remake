@@ -34,10 +34,19 @@ function Login() {
     e.preventDefault()
         try {
           logInWithEmailAndPassword(email, password)
-          toast.success('Success!')
+          toast.success(`You're logged in.`)
         } catch (error) {
             toast.error(error)
         }
+  }
+
+  if(user) {
+    return <>
+      <p>Already logged in.</p>
+      <section>
+          <button className="btn btn-primary" onClick={() => logout()}>Logout</button>
+      </section>
+    </>
   }
 
   return (
