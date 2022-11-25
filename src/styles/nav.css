@@ -62,7 +62,7 @@ nav {
     flex-direction: column;
 }
 
-.mobile-nav-menu a {
+.mobile-nav-menu a, .mobile-nav-menu li {
     width: 100%;
     text-align: center;
 }
@@ -78,7 +78,7 @@ nav {
     .hamburger {
         display: flex;
     }
-    .nav-right ul a {
+    .nav-right ul > * {
         display: none;
     }
 }

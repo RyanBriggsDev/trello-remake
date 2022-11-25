@@ -1,3 +1,7 @@
+.form {
+    margin: 1rem 0;
+}
+
 .form-register, .form-login {
     background-color: rgb(160, 0, 0);
     display: flex;
