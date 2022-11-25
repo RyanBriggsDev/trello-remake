@@ -1,10 +1,17 @@
 import Header from "../../components/pageStructure/Header"
 import { toast } from "react-toastify"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { registerWithEmailAndPassword, auth, logout } from '../../firebase'
 
-import { registerWithEmailAndPassword } from "../../firebase"
+import { useAuthState } from "react-firebase-hooks/auth";
+
 
 function Register() {
+
+  const [user, loading, error] = useAuthState(auth);
+
+  useEffect(() => {
+  }, [user, loading]);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -34,6 +41,17 @@ function Register() {
     } else {
         toast.error(`Passwords don't match.`)
     }
+  }
+
+  if(loading) return <p>Loading...</p>
+
+  if(user) {
+    return (
+    <>
+      <p>Already logged in.</p>
+      <button className="btn btn-primary my_05" onClick={() => logout()}>Logout</button>
+    </>
+    )
   }
 
   return (
