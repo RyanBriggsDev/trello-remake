@@ -1,13 +1,16 @@
 import Header from '../../components/pageStructure/Header'
+import Protected from '../../components/Protected'
 
 function Dashboard() {
   return (
-    <>
-        <Header 
-            title={'Your Dashboard'}
-            desc={'Welcome to your dashboard, auth.currentName'}
-        />
-    </>
+    <Protected>
+      <>
+          <Header 
+              title={'Your Dashboard'}
+              desc={'Welcome to your dashboard, auth.currentName'}
+          />
+      </>
+    </Protected>
   )
 }
 
