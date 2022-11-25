@@ -1,14 +1,17 @@
 import Header from "../../components/pageStructure/Header"
 import { toast } from "react-toastify"
 import { useState, useEffect } from "react"
-import { registerWithEmailAndPassword, auth, logout } from '../../firebase'
+import { useNavigate } from "react-router-dom"
 
+import { registerWithEmailAndPassword, auth, logout } from '../../firebase'
 import { useAuthState } from "react-firebase-hooks/auth";
 
 
 function Register() {
 
   const [user, loading, error] = useAuthState(auth);
+
+  const navigate = useNavigate()
 
   useEffect(() => {
   }, [user, loading]);
@@ -33,8 +36,9 @@ function Register() {
     e.preventDefault()
     if(password === password2) {
         try {
-            registerWithEmailAndPassword(name, email, password)
+            registerWithEmailAndPassword(email, password)
             toast.success('Success!')
+            navigate('/user/dashboard')
         } catch (error) {
             toast.error(error)
         }
@@ -64,7 +68,6 @@ function Register() {
         />
         <section>
             <form className="form form-register">
-                <input className="reg-input-one" value={name} onChange={(e) => onChange(e)} id={'name'} type="text" placeholder="Name" />
                 <input className="reg-input-two" value={email} onChange={(e) => onChange(e)} id={'email'} type="email" placeholder="Email" />
                 <input className="reg-input-three" value={password} onChange={(e) => onChange(e)} id={'password'} type="password" placeholder="Password" />
                 <input className="reg-input-four last-input" value={password2} onChange={(e) => onChange(e)} id={'password2'} type="password" placeholder="Confirm Password" />
