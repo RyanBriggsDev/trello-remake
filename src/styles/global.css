@@ -110,3 +110,18 @@ section {
     .g-1 {
         gap: 1rem;
     }
+
+    @media screen and (max-width: 60rem) {
+        .grid-1-2 {
+            grid-template-columns: 0.2fr 0.8fr;
+        }
+        .grid-1-1-1 {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media screen and (max-width: 40rem) {
+        .grid-1-2, .grid-1-1-1 {
+            grid-template-columns: 1fr;
+        }
+    }
