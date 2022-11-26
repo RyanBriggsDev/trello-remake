@@ -102,6 +102,11 @@ section {
         grid-template-columns: 0.25fr 0.75fr;
     }
 
+    .grid-1-1-1 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
     .g-1 {
         gap: 1rem;
     }
