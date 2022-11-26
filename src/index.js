@@ -4,6 +4,7 @@ import './styles/global.css';
 import './styles/nav.css';
 import './styles/button.css';
 import './styles/form.css';
+import './styles/dashboard.css';
 
 import App from './App';
 

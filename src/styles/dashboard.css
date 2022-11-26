@@ -1,0 +1,22 @@
+/* dashboard content */
+
+.dash-content {
+    background-color: rgb(40, 40, 40);
+    border-radius: 0.5rem;
+}
+
+.dash-content h3 {
+    padding-bottom: 1rem;
+}
+
+/* board preview */
+
+.board-preview {
+    padding: 0.5rem;
+    min-height: 8rem;
+    display: flex;
+    justify-content: end;
+    align-items: start;
+    flex-direction: column;
+}
+
