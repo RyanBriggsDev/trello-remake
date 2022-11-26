@@ -88,3 +88,20 @@ section {
     .my_05 {
         margin: 0.5rem 0;
     }
+
+    /* padding */
+
+    .p-1 {
+        padding: 1rem;
+    }
+
+    /* grids */
+
+    .grid-1-2 {
+        display: grid;
+        grid-template-columns: 0.25fr 0.75fr;
+    }
+
+    .g-1 {
+        gap: 1rem;
+    }
