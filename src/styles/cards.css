@@ -1,0 +1,28 @@
+/* useCaseCard */
+
+.use-case-card {
+    background-color: rgb(40, 40, 40);
+    border-radius: 0.5rem;
+}
+
+.use-case-card .use-card-card-color {
+    height: 3rem;
+    width: 100%;
+    border-radius: 0.5rem 0.5rem 0 0;
+    position: relative;
+}
+
+.use-case-card .use-card-card-color img {
+    width: 56px;
+    height: 56px;
+    position: absolute;
+    background-color: rgb(40, 40, 40);
+    padding: 0.6rem;
+    bottom: -1.5rem;
+    left: 2rem;
+    border-radius: 0.5rem;
+}
+
+.use-case-card .use-case-card-content {
+    padding: 1.5rem;
+}
