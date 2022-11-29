@@ -19,7 +19,7 @@ function VideoModal() {
       <div className="video-modal">
         {!videoModalOpen ? '' : 
           <>
-            <div className="video-modal-background">
+            <div className="video-modal-background" onClick={onClick}>
               <div className="video-modal-container">
                 <div className="video-modal-content">
                   <div className="modal-close">
