@@ -1,8 +1,41 @@
+import Header from '../components/pageStructure/Header'
+
+import { useEffect } from "react";
+
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../firebase";
 
 
 function Home() {
+
+  const [user, loading, error] = useAuthState(auth);
+    
+  useEffect(() => {
+  }, [user, loading]);
+
+  if(loading) return <p>Loading...</p>
+
+  
   return (
-    <div>Home</div>
+    <>
+      {
+        !user ? 
+          <Header 
+            title='Trello brings all your tasks, teammates, and tools together'
+            desc='Keep everything in the same place—even if your team isn’t.'
+            btnText={`Sign up - it's free!`}
+            link='/auth/register'
+          />
+        : 
+          <Header
+            title='Trello brings all your tasks, teammates, and tools together'
+            desc='Keep everything in the same place—even if your team isn’t.'
+            btnText={`View your dashboard`}
+            link='/user/dashboard'
+          />
+      } 
+      
+    </>
   )
 }
 
