@@ -33,7 +33,7 @@ function DemoWorkspaces() {
             <p>Cards represent tasks and ideas and hold all the information to get the job done. As you make progress, move cards across lists to show their status.</p>
           </div>
           <div className="demo-image">
-            <img src={Boards} alt="demo image" />
+            <img src={selected === 'boards' ? Boards : selected === 'lists' ? Lists : selected === 'cards' ? Cards : ''} alt="demo image" />
           </div>
         </div>
     </div>
