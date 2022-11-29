@@ -14,7 +14,7 @@ function DemoWorkspaces() {
 
   return (
     <div className="demo-workspaces">
-        <div className="title flex center title">
+        <div className="flex center title">
             <label>TRELLO 101</label>
             <h2>A productivity powerhouse</h2>
             <p className='w-75'>{`Simple, flexible, and powerful. All it takes are boards, lists, and cards to get a clear view of who’s doing what and what needs to get done. Learn more in `}<InlineLink href={'https://trello.com/guide'} text={'our guide for getting started.'} /></p>
@@ -32,7 +32,7 @@ function DemoWorkspaces() {
             <h3>Cards</h3>
             <p>Cards represent tasks and ideas and hold all the information to get the job done. As you make progress, move cards across lists to show their status.</p>
           </div>
-          <div className="demo-image">
+          <div className="demo-image flex center">
             <img src={selected === 'boards' ? Boards : selected === 'lists' ? Lists : selected === 'cards' ? Cards : ''} alt="demo image" />
           </div>
         </div>
