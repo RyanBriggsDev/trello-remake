@@ -154,16 +154,16 @@ section {
         width: 75%;
     }
 
-    /* components */
+/* components */
 
-    .inline-link {
-        cursor: pointer;
-        color: rgb(0, 82, 204);
-        text-decoration: underline;
-        font-family: PoppinsMI;
-        transition: 300ms ease-in-out;
-    }
+.inline-link {
+    cursor: pointer;
+    color: rgb(0, 82, 204);
+    text-decoration: underline;
+    font-family: PoppinsMI;
+    transition: 300ms ease-in-out;
+}
 
-    .inline-link:hover {
-        color: rgb(31, 105, 216);
-    }
+.inline-link:hover {
+    color: rgb(31, 105, 216);
+}
