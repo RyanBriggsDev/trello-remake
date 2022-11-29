@@ -7,6 +7,7 @@ import { useEffect } from "react";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
+import UseCases from '../components/demos/UseCases';
 
 
 function Home() {
@@ -48,6 +49,9 @@ function Home() {
       {/* trello 101 */}
       <section>
         <DemoWorkspaces />
+      </section>
+      <section>
+        <UseCases />
       </section>
     </>
   )
