@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
@@ -8,7 +8,6 @@ import Header from "./pageStructure/Header";
 
 function Protected(props) {
     
-    const navigate = useNavigate()
     const [user, loading, error] = useAuthState(auth);
     
     useEffect(() => {
