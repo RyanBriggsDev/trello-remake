@@ -1,4 +1,5 @@
 import Header from '../components/pageStructure/Header'
+import VideoModal from '../components/modals/VideoModal';
 
 import { useEffect } from "react";
 
@@ -14,7 +15,6 @@ function Home() {
   }, [user, loading]);
 
   if(loading) return <p>Loading...</p>
-
   
   return (
     <>
@@ -34,6 +34,8 @@ function Home() {
             link='/user/dashboard'
           />
       } 
+      
+      <VideoModal />
       
     </>
   )
