@@ -1,0 +1,28 @@
+
+
+/* workspaces */
+
+.demo-workspaces .demo .boards {
+    grid-area: boards;
+}
+
+.demo-workspaces .demo .lists {
+    grid-area: lists;
+}
+
+.demo-workspaces .demo .cards {
+    grid-area: cards;
+}
+
+.demo-workspaces .demo .demo-image{
+    grid-area: demo-image;
+}
+
+.demo-workspaces .demo {
+    display: grid;
+    grid-template-areas: 
+    "boards demo-image"
+    "lists demo-image"
+    "cards demo-image"
+    ;
+}
