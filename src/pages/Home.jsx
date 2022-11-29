@@ -1,6 +1,7 @@
 import Header from '../components/pageStructure/Header'
 import VideoModal from '../components/modals/VideoModal';
 import HomeHeroImage from '../assets/home/homeHeroImage.webp'
+import InlineLink from '../components/pageStructure/InlineLink';
 
 import { useEffect } from "react";
 
@@ -35,6 +36,8 @@ function Home() {
             link='/user/dashboard'
           />
       } 
+
+      {/* Hero  */}
       <section>
         <VideoModal />
         <div className="home-hero-image my_05 flex center">
@@ -42,6 +45,14 @@ function Home() {
         </div>
       </section>
 
+      {/* trello 101 */}
+      <section>
+        <div className="flex center">
+          <label>Trello 101</label>
+          <h3>A productivity powerhouse</h3>
+          <p>{`Simple, flexible, and powerful. All it takes are boards, lists, and cards to get a clear view of who’s doing what and what needs to get done. Learn more in `}<InlineLink href={'https://trello.com/guide'} text={'our guide for getting started.'} /></p>
+        </div>
+      </section>
     </>
   )
 }
