@@ -23,7 +23,7 @@ function VideoModal() {
               <div className="video-modal-container">
                 <div className="video-modal-content">
                   <div className="modal-close">
-                    <img src={blackCloseWindow} alt="black cross, close window" />
+                    <img src={blackCloseWindow} alt="black cross, close window" onClick={onClick}/>
                   </div>
                   <div className="video-modal-video">
                   <iframe src="https://www.youtube.com/embed/l3F3l3psqXY"></iframe>
