@@ -125,3 +125,24 @@ section {
             grid-template-columns: 1fr;
         }
     }
+
+    /* flex */
+
+    .flex {
+        display: flex;
+    }
+
+    .center {
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* width */
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .w-75 {
+        width: 75%;
+    }
