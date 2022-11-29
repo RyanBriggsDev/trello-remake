@@ -6,6 +6,7 @@ import './styles/button.css';
 import './styles/form.css';
 import './styles/dashboard.css';
 import './styles/videoModal.css';
+import './styles/demos.css';
 
 import App from './App';
 
