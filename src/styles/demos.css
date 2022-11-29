@@ -2,6 +2,14 @@
 
 /* workspaces */
 
+.demo-workspaces h2 {
+    margin: 1rem 0;
+}
+
+.demo-workspaces .title {
+    margin-bottom: 1rem
+}
+
 .demo-workspaces .demo .boards {
     grid-area: boards;
 }
@@ -27,7 +35,6 @@
     "lists demo-image"
     "cards demo-image";
     gap: 1.5rem;
-
 }
 
 .demo-workspaces .demo-image > img {
@@ -48,4 +55,35 @@
 .selected {
     background-color: rgb(40 40 40);
     border-left: solid 0.5rem rgb(0, 199, 229);
+}
+
+@media screen and (max-width: 75rem) {
+    .demo-workspaces .demo {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas: 
+        "demo-image demo-image demo-image"
+        "boards lists cards";
+        gap: 1rem;
+    }
+    .demo-workspaces .demo-image > img {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 60rem) {
+    .demo-workspaces .demo-image > img {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 40rem) {
+    .demo-workspaces .demo {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "demo-image"
+        "boards"
+        "lists"
+        "cards";
+        gap: 1rem;
+    }
 }
