@@ -10,7 +10,7 @@ import Cards from '../../assets/home/demoWorkspaces/demoCards.webp'
 function DemoWorkspaces() {
 
 
-  const [selected, setSelected] = useState(null)
+  const [selected, setSelected] = useState('boards')
 
   return (
     <div className="demo-workspaces">
