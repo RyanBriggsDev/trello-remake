@@ -1,10 +1,13 @@
 import Header from '../components/pageStructure/Header'
 import VideoModal from '../components/modals/VideoModal';
+import HomeHeroImage from '../assets/home/homeHeroImage.webp'
+import DemoWorkspaces from '../components/demos/DemoWorkspaces'
 
 import { useEffect } from "react";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
+import UseCases from '../components/demos/UseCases';
 
 
 function Home() {
@@ -34,8 +37,21 @@ function Home() {
             link='/user/dashboard'
           />
       } 
+
+      {/* Hero  */}
       <section>
         <VideoModal />
+        <div className="home-hero-image my_05 flex center">
+          <img className='w-75' src={HomeHeroImage} alt="workflow example" />
+        </div>
+      </section>
+
+      {/* trello 101 */}
+      <section>
+        <DemoWorkspaces />
+      </section>
+      <section>
+        <UseCases />
       </section>
     </>
   )

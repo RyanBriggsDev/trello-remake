@@ -12,7 +12,7 @@ function VideoModal() {
 
   return (
     <div className="video-modal-component">
-      <div className="video-modal-link">
+      <div className="video-modal-link flex center">
         <FuncButton btnText='Watch video' func={onClick}/>
         <img onClick={onClick} src={whitePlayIcon} alt="white play icon" />
       </div>

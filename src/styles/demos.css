@@ -1,0 +1,89 @@
+
+
+/* workspaces */
+
+.demo-workspaces h2 {
+    margin: 1rem 0;
+}
+
+.demo-workspaces .title {
+    margin-bottom: 1rem
+}
+
+.demo-workspaces .demo .boards {
+    grid-area: boards;
+}
+
+.demo-workspaces .demo .lists {
+    grid-area: lists;
+}
+
+.demo-workspaces .demo .cards {
+    grid-area: cards;
+}
+
+.demo-workspaces .demo .demo-image{
+    width: 100%;
+    grid-area: demo-image;
+}
+
+.demo-workspaces .demo {
+    display: grid;
+    grid-template-columns: 0.3fr 0.7fr;
+    grid-template-areas: 
+    "boards demo-image"
+    "lists demo-image"
+    "cards demo-image";
+    gap: 1.5rem;
+}
+
+.demo-workspaces .demo-image > img {
+    width: 100%;
+}
+
+.demo-workspaces .demo-workplace-buttons {
+    padding: 1rem;
+    transition: 300ms ease-in-out;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.demo-workspaces .demo-workplace-buttons:hover {
+    background-color: rgb(40, 40, 40);
+}
+
+.selected {
+    background-color: rgb(40 40 40);
+    border-left: solid 0.5rem rgb(0, 199, 229);
+}
+
+@media screen and (max-width: 75rem) {
+    .demo-workspaces .demo {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas: 
+        "demo-image demo-image demo-image"
+        "boards lists cards";
+        gap: 1rem;
+    }
+    .demo-workspaces .demo-image > img {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 60rem) {
+    .demo-workspaces .demo-image > img {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 40rem) {
+    .demo-workspaces .demo {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "demo-image"
+        "boards"
+        "lists"
+        "cards";
+        gap: 1rem;
+    }
+}
