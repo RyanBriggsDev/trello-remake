@@ -34,9 +34,9 @@ function Home() {
             link='/user/dashboard'
           />
       } 
-      
-      <VideoModal />
-      
+      <section>
+        <VideoModal />
+      </section>
     </>
   )
 }

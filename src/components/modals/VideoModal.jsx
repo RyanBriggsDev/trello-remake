@@ -1,6 +1,5 @@
 import FuncButton from "../pageStructure/FuncButton"
 import whitePlayIcon from '../../assets/icons/play-icon-white.png'
-import blackCloseWindow from '../../assets/icons/close-window-black.png'
 import whiteCloseWindow from '../../assets/icons/close-window-white-60.png'
 
 import { useState } from "react"

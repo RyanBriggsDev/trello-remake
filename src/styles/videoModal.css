@@ -44,3 +44,15 @@
     height: 40px;
     cursor: pointer;
 }
+
+@media screen and (max-width: 60rem) {
+    .video-modal-content {
+        min-width: 75%;
+    }
+}
+
+@media screen and (max-width: 40rem) {
+    .video-modal-content {
+        min-width: 90%;
+    }
+}
