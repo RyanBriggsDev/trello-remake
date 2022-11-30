@@ -5,10 +5,16 @@ import Brainstorming from '../../assets/home/useCases/Brainstorming.png'
 import Meetings from '../../assets/home/useCases/Meetings.png'
 import CRM from '../../assets/home/useCases/CRM.png'
 import Calendar from '../../assets/home/useCases/Calendar.png'
+import ExternalButton from "../pageStructure/ExternalButton"
 
 function UseCases() {
   return (
-    <div className="grid-1-1-1 g-1">
+    <>
+    <div className="flex left title my-1">
+      <label className="font-1">TRELLO IN ACTION</label>
+      <h2 className="font-2_25">Workflows for any project, big or small</h2>
+    </div>
+    <div className="grid-1-1-1 g-1 my-1">
         <UseCaseCard 
           title='Project Management'
           color='rgb(255, 143, 115)'
@@ -45,6 +51,11 @@ function UseCases() {
           src={Calendar}
         />
     </div>
+    <div className="grid-2-1 g-1 left">
+      <p className="font-1">{`No need to start from scratch. Jump-start your workflow with a proven playbook designed for different teams. Customize it to make it yours.`}</p>
+      <ExternalButton btnText='Explore all Use Cases' btnClass='btn-hollow' href='https://trello.com/use-cases'/>
+    </div>
+    </>
   )
 }
 
