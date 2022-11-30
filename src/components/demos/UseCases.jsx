@@ -8,6 +8,11 @@ import Calendar from '../../assets/home/useCases/Calendar.png'
 
 function UseCases() {
   return (
+    <>
+    <div className="flex left title my-1">
+      <label className="font-1">TRELLO IN ACTION</label>
+      <h2 className="font-2_25">Workflows for any project, big or small</h2>
+    </div>
     <div className="grid-1-1-1 g-1">
         <UseCaseCard 
           title='Project Management'
@@ -45,6 +50,7 @@ function UseCases() {
           src={Calendar}
         />
     </div>
+    </>
   )
 }
 
