@@ -15,8 +15,8 @@ function DemoWorkspaces() {
   return (
     <div className="demo-workspaces">
         <div className="flex center title">
-            <label>TRELLO 101</label>
-            <h2>A productivity powerhouse</h2>
+            <label className="font-1">TRELLO 101</label>
+            <h2 className="font-2_25">A productivity powerhouse</h2>
             <p className='w-75'>{`Simple, flexible, and powerful. All it takes are boards, lists, and cards to get a clear view of who’s doing what and what needs to get done. Learn more in `}<InlineLink href={'https://trello.com/guide'} text={'our guide for getting started.'} /></p>
         </div>
         <div className="demo my_05">

@@ -111,6 +111,11 @@ section {
         grid-template-columns: 0.25fr 0.75fr;
     }
 
+    .grid-2-1 {
+        display: grid;
+        grid-template-columns: 0.75fr 0.25fr;
+    }
+
     .grid-1-1-1 {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -124,6 +129,9 @@ section {
         .grid-1-2 {
             grid-template-columns: 0.2fr 0.8fr;
         }
+        .grid-2-1 {
+            grid-template-columns: 0.8fr 0.2fr;
+        }
         .grid-1-1-1 {
             grid-template-columns: 1fr 1fr;
         }
@@ -131,6 +139,9 @@ section {
 
     @media screen and (max-width: 40rem) {
         .grid-1-2, .grid-1-1-1 {
+            grid-template-columns: 1fr;
+        }
+        .grid-2-1 {
             grid-template-columns: 1fr;
         }
     }
@@ -150,7 +161,7 @@ section {
 
     .left {
         justify-content: flex-start;
-        align-items: flex-start;
+        align-items: center;
         flex-direction: column;
         text-align: start;
     }

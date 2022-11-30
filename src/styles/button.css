@@ -12,6 +12,10 @@
     background-color: rgb(60, 60, 60);
 }
 
+.btn-hollow {
+    border: 4px rgb(60, 60, 60) solid;
+}
+
 .btn-primary {
     background-color: rgb(160, 0, 0);
     border-radius: 0 0.5rem 0.5rem 0;
