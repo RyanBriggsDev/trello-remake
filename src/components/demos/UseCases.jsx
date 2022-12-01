@@ -14,7 +14,7 @@ function UseCases() {
       <label className="font-1">TRELLO IN ACTION</label>
       <h2 className="font-2_25">Workflows for any project, big or small</h2>
     </div>
-    <div className="grid-1-1-1 g-1 my-1">
+    <div className="grid-1-1-1 g-1 my-3">
         <UseCaseCard 
           title='Project Management'
           color='rgb(255, 143, 115)'
