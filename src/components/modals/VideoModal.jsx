@@ -17,7 +17,7 @@ function VideoModal() {
         <img onClick={onClick} src={whitePlayIcon} alt="white play icon" />
       </div>
       <div className="video-modal">
-        {!videoModalOpen ? '' : 
+        {!videoModalOpen ? '' :
           <>
             <div className="video-modal-background" onClick={onClick}>
               <div className="video-modal-content">
