@@ -87,3 +87,14 @@
         gap: 1rem;
     }
 }
+
+/* deadlines */
+
+.demo-deadlines {
+    background-color: rgb(40, 40, 40);
+    padding: 0 3rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    background: url("//images.ctfassets.net/rz1oowkt5gyp/7KgS3XVFhGu3TiclJKloEp/c10aad15fb171a6c245db9cb7910247d/ViewsBackground_Left_Narrow.svg") left center / contain no-repeat scroll padding-box border-box, url("//images.ctfassets.net/rz1oowkt5gyp/2HisRmboWIdXSYaaUSDzon/dadecff4be8a39bf2cf3cc537bd4d9c1/ViewsBackground_Right_Narrow.svg") right center / contain no-repeat scroll padding-box border-box, linear-gradient(240deg, rgb(0, 184, 217), rgb(0, 101, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(0, 101, 255)
+}

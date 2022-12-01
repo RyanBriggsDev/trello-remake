@@ -26,3 +26,7 @@
 .btn-primary:hover {
     background-color: rgba(160, 0, 0, 0.5);
 }
+
+.btn-trans {
+    background-color: rgba(0, 0, 0, 0.5);
+}

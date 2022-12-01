@@ -2,7 +2,7 @@
 
 function InlineLink(props) {
   return (
-    <a className="inline-link" href={props.href} target={props.target}>{props.text}</a>
+    <a className={`inline-link ${props.className}`} href={props.href} target={props.target}>{props.text}</a>
   )
 }
 
