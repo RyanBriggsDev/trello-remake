@@ -2,6 +2,7 @@ import Header from '../components/pageStructure/Header'
 import VideoModal from '../components/modals/VideoModal';
 import HomeHeroImage from '../assets/home/homeHeroImage.webp'
 import DemoWorkspaces from '../components/demos/DemoWorkspaces'
+import DemoDeadlines from '../components/demos/DemoDeadlines';
 
 import { useEffect } from "react";
 
@@ -52,6 +53,9 @@ function Home() {
       </section>
       <section>
         <UseCases />
+      </section>
+      <section>
+        <DemoDeadlines />
       </section>
     </>
   )
