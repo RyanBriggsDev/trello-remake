@@ -42,7 +42,7 @@ function Home() {
       <section>
         <VideoModal />
         <div className="home-hero-image my_05 flex center">
-          <img className='w-75' src={HomeHeroImage} alt="workflow example" />
+          <img src={HomeHeroImage} alt="workflow example" />
         </div>
       </section>
 
