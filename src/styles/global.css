@@ -60,7 +60,8 @@ body {
 }
 
 header {
-    margin: 5rem 0;
+    margin: 12rem 0 5rem 0;
+    padding: 2rem 0;
 }
 
 header > * {
@@ -69,11 +70,19 @@ header > * {
 
 section {
     margin: 5rem 0;
+    padding: 2rem 0;
 }
 
 @media screen and (max-width: 60rem) {
     .content {
         padding: 0 1rem;
+    }
+    section {
+        margin: 3rem 0;
+        padding: 0;
+    }
+    header {
+        margin: 5rem 0 5rem 0;
     }
 }
 
