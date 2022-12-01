@@ -102,6 +102,10 @@ section {
         margin: 0 0.5rem;
     }
 
+    .mx-2 {
+        margin: 0 2rem;
+    }
+
     .my_05 {
         margin: 0.5rem 0;
     }
@@ -116,9 +120,8 @@ section {
 
     /* padding */
 
-    .p-1 {
-        padding: 1rem;
-    }
+    .p-1 {padding: 1rem;}
+    .px-2 {padding: 2rem;}
 
     /* grids */
 
@@ -137,6 +140,16 @@ section {
         grid-template-columns: repeat(3, 1fr);
     }
 
+    .grid-4-6 {
+        display: grid;
+        grid-template-columns: 0.4fr 0.6fr;
+    }
+
+    .grid-6-4 {
+        display: grid;
+        grid-template-columns: 0.6fr 0.4fr;
+    }
+
     .g-1 {
         gap: 1rem;
     }
@@ -151,6 +164,7 @@ section {
         .grid-1-1-1 {
             grid-template-columns: 1fr 1fr;
         }
+        .grid-6-4, .grid-4-6 {grid-template-columns: 1fr;}
     }
 
     @media screen and (max-width: 40rem) {
@@ -182,6 +196,10 @@ section {
         text-align: start;
     }
 
+    .center-x {
+        align-items: center;
+    }
+
     /* width */
 
     .w-100 {
@@ -201,11 +219,17 @@ section {
     .font-1 {font-size: 1rem;}
     .font-2_25 {font-size: 2.25rem;}
 
+    /* text */
+
+    .ta-left {
+        text-align: left;
+    }
+
 /* components */
 
 .inline-link {
     cursor: pointer;
-    color: rgb(0, 82, 204);
+    color: rgb(63, 140, 255);
     text-decoration: underline;
     font-family: PoppinsMI;
     transition: 300ms ease-in-out;

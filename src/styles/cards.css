@@ -26,3 +26,11 @@
 .use-case-card .use-case-card-content {
     padding: 1.5rem;
 }
+
+/* grid card */
+
+.grid-card {
+    background-color:rgb(40, 40, 40);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
