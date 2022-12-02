@@ -229,9 +229,8 @@ section {
 
     /* colors */
 
-    .bg-gray {
-        background-color: rgb(40 40 40);
-    }
+    .bg-gray {background-color: rgb(40 40 40);}
+    .bg-lgray {background-color: lightgrey; color: black;}
 
     /* border */
 
