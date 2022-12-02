@@ -152,9 +152,8 @@ section {
         grid-template-columns: 0.6fr 0.4fr;
     }
 
-    .g-1 {
-        gap: 1rem;
-    }
+    .g-1 {gap: 1rem;}
+    .g-1_5 {gap: 1.5rem;}
 
     @media screen and (max-width: 60rem) {
         .grid-1-2 {
