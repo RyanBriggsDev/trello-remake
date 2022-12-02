@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 import UseCases from '../components/demos/UseCases';
+import WaysToGrow from '../components/demos/WaysToGrow';
 
 import useSetTitle from '../hooks/useSetTitle'
 
@@ -60,6 +61,9 @@ function Home() {
       </section>
       <section>
         <DemoDeadlines />
+      </section>
+      <section>
+        <WaysToGrow />
       </section>
     </>
   )

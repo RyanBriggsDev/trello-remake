@@ -121,7 +121,9 @@ section {
     /* padding */
 
     .p-1 {padding: 1rem;}
-    .px-2 {padding: 2rem;}
+    .p-1-5 {padding: 1.5rem;}
+    .p-2 {padding: 2rem;}
+    .p-3 {padding: 3rem;}
 
     /* grids */
 
@@ -223,6 +225,18 @@ section {
 
     .ta-left {
         text-align: left;
+    }
+
+    /* colors */
+
+    .bg-gray {
+        background-color: rgb(40 40 40);
+    }
+
+    /* border */
+
+    .br {
+        border-radius: 0.5rem;
     }
 
 /* components */
