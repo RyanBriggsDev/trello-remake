@@ -10,6 +10,11 @@
     src: url('../assets/fonts/Poppins/Poppins-MediumItalic.ttf');
 }
 
+@font-face {
+    font-family: PoppinsBld;
+    src: url(../assets/fonts/Poppins/Poppins-Bold.ttf);
+}
+
 /* html elements */
 
 *::before, *::after, * {
@@ -127,6 +132,8 @@ section {
 
     /* grids */
 
+    .grid {display: grid;}
+
     .grid-1-2 {
         display: grid;
         grid-template-columns: 0.25fr 0.75fr;
@@ -192,7 +199,7 @@ section {
 
     .left {
         justify-content: flex-start;
-        align-items: center;
+        align-items: flex-start;
         flex-direction: column;
         text-align: start;
     }
@@ -200,6 +207,8 @@ section {
     .center-x {
         align-items: center;
     }
+
+    .space-between {justify-content: space-between;}
 
     /* width */
 
@@ -215,6 +224,10 @@ section {
         width: 100vw;
     }
 
+    /* height */
+
+    .h-100 {height: 100%;}
+
     /* font sizes */
 
     .font-1 {font-size: 1rem;}
@@ -225,6 +238,8 @@ section {
     .ta-left {
         text-align: left;
     }
+
+    .bold {font-family: PoppinsBld;}
 
     /* colors */
 
