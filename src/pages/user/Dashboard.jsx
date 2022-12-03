@@ -6,7 +6,11 @@ import DashboardContent from '../../components/user/DashboardContent';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from '../../firebase'
 
+import useSetTitle from '../../hooks/useSetTitle';
+
 function Dashboard() {
+
+  useSetTitle('Dashboard')
 
   return (
     <Protected>

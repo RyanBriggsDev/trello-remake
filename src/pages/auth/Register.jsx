@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom"
 
 import { registerWithEmailAndPassword, auth, logout } from '../../firebase'
 import { useAuthState } from "react-firebase-hooks/auth";
-
+import useSetTitle from "../../hooks/useSetTitle"
 
 function Register() {
 
   const [user, loading, error] = useAuthState(auth);
+
+  useSetTitle('Register')
 
   const navigate = useNavigate()
 
