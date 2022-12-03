@@ -232,6 +232,7 @@ section {
 
     .font-1 {font-size: 1rem;}
     .font-2_25 {font-size: 2.25rem;}
+    .font-5 {font-size: 5rem;}
 
     /* text */
 
@@ -254,14 +255,23 @@ section {
 
 /* components */
 
-.inline-link {
-    cursor: pointer;
-    color: rgb(63, 140, 255);
-    text-decoration: underline;
-    font-family: PoppinsMI;
-    transition: 300ms ease-in-out;
-}
+    /* inline link */
 
-.inline-link:hover {
-    color: rgb(31, 105, 216);
-}
+    .inline-link {
+        cursor: pointer;
+        color: rgb(63, 140, 255);
+        text-decoration: underline;
+        font-family: PoppinsMI;
+        transition: 300ms ease-in-out;
+    }
+
+    .inline-link:hover {
+        color: rgb(31, 105, 216);
+    }
+
+    /* not found */
+
+    .not-found > iframe {
+        height: 100%; 
+        min-height: 350px;
+    }
