@@ -1,6 +1,10 @@
 import Header from "../components/pageStructure/Header"
+import useSetTitle from "../hooks/useSetTitle"
 
 function NotFound() {
+
+    useSetTitle('404 - Page Not Found')
+
   return (
     <div className="grid-2-1 g-1_5 not-found">
         <Header 
