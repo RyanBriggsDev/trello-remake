@@ -3,7 +3,7 @@ import Button from "./Button"
 function Header(props) {
   return (
     <header>
-        <h1>{props.title}</h1>
+        <h1 className={props.titleClassName}>{props.title}</h1>
         <p>{props.desc}</p>
         {props.btnText ? 
           <Button
@@ -22,6 +22,7 @@ export default Header
 
 Header.defaultProps = {
   title: 'title',
+  titleClassName: '',
   desc: 'desc',
   btnText: '',
   link: '/'

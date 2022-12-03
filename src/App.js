@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Dashboard from './pages/user/Dashboard';
+import NotFound from './pages/NotFound';
 
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 
@@ -25,6 +26,8 @@ function App() {
                 <Route path='/auth/login' element={<Login />} />
                 <Route path='/auth/register' element={<Register />} />
                 <Route path='/user/dashboard' element={<Dashboard />} />
+                <Route path='/*' element={<NotFound />} />
+                <Route path='/404' element={<NotFound />} />
             </Routes>
           </div>
           <Footer />
