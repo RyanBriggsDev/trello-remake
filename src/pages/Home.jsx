@@ -10,10 +10,14 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 import UseCases from '../components/demos/UseCases';
 
+import useSetTitle from '../hooks/useSetTitle'
+
 
 function Home() {
 
   const [user, loading, error] = useAuthState(auth);
+
+  useSetTitle('Home')
     
   useEffect(() => {
   }, [user, loading]);
