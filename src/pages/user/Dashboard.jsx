@@ -4,12 +4,9 @@ import Protected from '../../components/Protected'
 import DashboardContent from '../../components/user/DashboardContent';
 
 import { useAuthState } from "react-firebase-hooks/auth";
-
-import useFetchBoards from '../../hooks/useFetchBoards';
+import { auth } from '../../firebase'
 
 function Dashboard() {
-
-  useFetchBoards()
 
   return (
     <Protected>
