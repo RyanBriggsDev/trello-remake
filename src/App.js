@@ -8,6 +8,8 @@ import Register from './pages/auth/Register';
 import Dashboard from './pages/user/Dashboard';
 import NotFound from './pages/NotFound';
 
+import SliderTest from './pages/test/SliderTest';
+
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 
 import { ToastContainer } from 'react-toastify';
@@ -28,6 +30,7 @@ function App() {
                 <Route path='/user/dashboard' element={<Dashboard />} />
                 <Route path='/*' element={<NotFound />} />
                 <Route path='/404' element={<NotFound />} />
+                <Route path='/test/slider' element={<SliderTest />} />
             </Routes>
           </div>
           <Footer />
