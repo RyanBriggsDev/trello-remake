@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { initializeApp } from "firebase/app";
 
 import { GoogleAuthProvider, getAuth, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut } from "firebase/auth";
-import { getFirestore, query, getDocs, collection, where, addDoc } from "firebase/firestore";
+import { getFirestore, query, getDocs, collection, where, addDoc, getDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify";
 
 const firebaseConfig = {
