@@ -10,6 +10,8 @@ import useFetchBoards from '../../hooks/useFetchBoards';
 
 function Dashboard() {
 
+  useFetchBoards()
+
   return (
     <Protected>
       <>
