@@ -10,7 +10,7 @@ function useFetchBoards() {
 
     useEffect(() => {
         const fetchBoards = async () => {
-        const docRef = doc(db, `users/PDEezsir70X4oJkYci1h/boards/EqulyZR3AWJDDF5DRz7Q`)
+        const docRef = doc(db, `users/PDEezsir70X4oJkYci1h/boards/3BJVVJ9GiTcu1CXufFVq`)
         const docSnap = await getDoc(docRef)
     
         if(docSnap.exists()) {
@@ -22,7 +22,7 @@ function useFetchBoards() {
         fetchBoards()
     }, [])
 
-    console.log(boards);
+    console.log(boards)
 
     if(loading) return <p>Loading...</p>
 
