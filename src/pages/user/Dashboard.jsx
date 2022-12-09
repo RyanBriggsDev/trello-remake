@@ -7,10 +7,12 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { fetchBoards } from '../../firebase';
 
 import useFetchBoards from '../../hooks/useFetchBoards';
+import useSetTitle from '../../hooks/useSetTitle';
 
 function Dashboard() {
 
   useFetchBoards()
+  useSetTitle('Dashboard')
 
   return (
     <Protected>
