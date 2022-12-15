@@ -39,7 +39,6 @@ nav {
 
     .hamburger.open .hamburger-line:nth-child(1) {
         transform: rotate(-45deg) translate(-1px, 11px);
-        /* background-color: red */
     }
         
     .hamburger.open .hamburger-line:nth-child(2) {    
@@ -60,6 +59,7 @@ nav {
     top: 2.5rem;
     left: 0;
     flex-direction: column;
+    background-color: red;
 }
 
 .mobile-nav-menu a, .mobile-nav-menu li {

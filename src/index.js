@@ -8,6 +8,7 @@ import './styles/dashboard.css';
 import './styles/videoModal.css';
 import './styles/demos.css';
 import './styles/cards.css';
+import './styles/transitions.css';
 
 import App from './App';
 

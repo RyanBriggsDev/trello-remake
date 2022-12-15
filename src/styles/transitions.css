@@ -1,0 +1,34 @@
+/* transition classes */
+
+/* appear */
+
+  /* enter */
+  
+  .nav-enter {
+    opacity: 0;
+  }
+  
+  .nav-enter-active {
+    opacity: 1;
+    transition: opacity 1s;
+  }
+  
+  .nav-enter-done {
+    opacity: 1;
+  }
+  
+  /* exit */
+  
+  .nav-exit {
+    opacity: 1;
+    transition: opacity 1s;
+  }
+  
+  .nav-exit-active {
+    opacity: 1;
+  }
+  
+  .nav-exit-done {
+    opacity: 0;
+  }
+  
