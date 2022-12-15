@@ -9,6 +9,7 @@ import Dashboard from './pages/user/Dashboard';
 import NotFound from './pages/NotFound';
 
 import SliderTest from './pages/test/SliderTest';
+import Test from './pages/test/Test';
 
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 

@@ -15,9 +15,9 @@ function Protected(props) {
 
     if(loading) return <p>Loading...</p>
 
-    if(!user) return <Header title='403 - Access Denied' desc='This page is protected. Please login to continue.' btnText='Login' link='/auth/login'/>
-
     if(user) return <>{props.children}</>
+    
+    if(!user) return <Header title='403 - Access Denied' desc='This page is protected. Please login to continue.' btnText='Login' link='/auth/login'/>
     
 }
 
